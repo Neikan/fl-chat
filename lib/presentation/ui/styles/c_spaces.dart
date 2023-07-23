@@ -1,0 +1,3 @@
+class CSpaces {
+  CSpaces._();
+}
