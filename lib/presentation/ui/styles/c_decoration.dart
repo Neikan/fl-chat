@@ -1,6 +1,8 @@
 // Flutter imports:
-import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 
 abstract class CDecoration {
   CDecoration._();

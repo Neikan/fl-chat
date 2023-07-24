@@ -18,7 +18,6 @@ class CMessageIncoming extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.centerLeft,
       constraints: const BoxConstraints(
         maxWidth: 259.0,
         minWidth: 220.0,

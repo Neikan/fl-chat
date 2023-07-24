@@ -4,7 +4,7 @@ class _CContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(21.0, 20.0, 21.0, 19.0),
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
       child: Row(
         children: [
           _CContactAvatar(),
@@ -13,8 +13,14 @@ class _CContact extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Виртуальный ассистент', style: CTextStyle.contactName),
-                _CContactStatus(),
+                const Text('Виртуальный помощник', style: CTextStyle.contactName),
+                BlocBuilder<BlocAuth, BlocAuthState>(
+                  builder: (context, state) => state.when(
+                    auth: () => const _CContactStatus(status: 'Connecting...'),
+                    online: () => const _CContactStatus(status: 'Online'),
+                    offline: () => const _CContactStatus(status: 'Offline'),
+                  ),
+                ),
               ],
             ),
           ),
@@ -44,8 +50,16 @@ class _CContactAvatar extends StatelessWidget {
 
 // ToDo По идее состояние статуса должно быть получено откуда-то извне
 class _CContactStatus extends StatelessWidget {
+  final String status;
+
+  const _CContactStatus({
+    required this.status,
+  });
+
   @override
   Widget build(BuildContext context) {
+    final isOnline = status == 'Online';
+
     return Padding(
       padding: const EdgeInsets.only(top: 5.0),
       child: Row(
@@ -54,15 +68,15 @@ class _CContactStatus extends StatelessWidget {
             width: CSizes.contactStatus,
             height: CSizes.contactStatus,
             decoration: BoxDecoration(
-              color: CColors.contactStatus,
+              color: isOnline ? CColors.contactStatusOnline : CColors.contactStatusOffline,
               borderRadius: CDecoration.brContactStatus,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 5.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 5.0),
             child: Text(
-              'Online',
-              style: CTextStyle.contactStatus,
+              status,
+              style: isOnline ? CTextStyle.contactStatusOnline : CTextStyle.contactStatusOffline,
             ),
           ),
         ],

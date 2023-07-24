@@ -12,7 +12,8 @@ class CColors {
   static const Color chatBackground = Color(0xFFF9FAFB);
   static const Color chatAppBar = white;
 
-  static const Color contactStatus = Color(0xFF0BA4A4);
+  static const Color contactStatusOnline = Color(0xFF0BA4A4);
+  static const Color contactStatusOffline = gray;
   static const Color contactName = blueDark;
   static const Color contactBackgroundAvatar = Color(0xFFD9D9D9);
 
@@ -21,9 +22,9 @@ class CColors {
   static const Color messageInBackground = white;
   static const Color messageInBorder = Color(0xFFF3F4F7);
 
-  static const Color messageOut = white;
-  static const Color messageOutBackground1 = blue;
-  static const Color messageOutBackground2 = gray;
+  static const Color menuText = white;
+  static const Color menuBackgroundSelected = blue;
+  static const Color menuBackground = gray;
 
   static const Color messageFieldHint = gray;
   static const Color messageFieldButton = blue;

@@ -13,8 +13,14 @@ abstract class CTextStyle {
     fontWeight: FontWeight.w600,
   );
 
-  static const TextStyle contactStatus = TextStyle(
-    color: CColors.contactStatus,
+  static const TextStyle contactStatusOnline = TextStyle(
+    color: CColors.contactStatusOnline,
+    fontSize: 17.0,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle contactStatusOffline = TextStyle(
+    color: CColors.contactStatusOffline,
     fontSize: 17.0,
     fontWeight: FontWeight.w500,
   );
@@ -29,8 +35,8 @@ abstract class CTextStyle {
     fontSize: 10.0,
   );
 
-  static const TextStyle messageOut = TextStyle(
-    color: CColors.messageOut,
+  static const TextStyle menuItem = TextStyle(
+    color: CColors.menuText,
     fontSize: 14.0,
   );
 
