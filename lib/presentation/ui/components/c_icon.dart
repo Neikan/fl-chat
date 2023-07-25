@@ -25,10 +25,10 @@ class CIcon extends StatelessWidget {
     return SvgPicture.asset(
       'assets/images/icons/$name.svg',
       semanticsLabel: semanticsLabel,
-      width: size ?? CSizes.icon,
-      height: size ?? CSizes.icon,
+      width: size ?? CSizes.fieldIcon,
+      height: size ?? CSizes.fieldIcon,
       color: color,
-      fit: BoxFit.scaleDown,
+      fit: BoxFit.none,
     );
   }
 }

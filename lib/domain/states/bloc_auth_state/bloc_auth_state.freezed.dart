@@ -19,44 +19,44 @@ mixin _$BlocAuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
-    required TResult Function() online,
-    required TResult Function() offline,
+    required TResult Function(AppChatsState data) authed,
+    required TResult Function() noAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
-    TResult? Function()? online,
-    TResult? Function()? offline,
+    TResult? Function(AppChatsState data)? authed,
+    TResult? Function()? noAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
-    TResult Function()? online,
-    TResult Function()? offline,
+    TResult Function(AppChatsState data)? authed,
+    TResult Function()? noAuth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BlocAuthStateAuth value) auth,
-    required TResult Function(BlocAuthStateOnline value) online,
-    required TResult Function(BlocAuthStateOffline value) offline,
+    required TResult Function(BlocAuthStateAuthed value) authed,
+    required TResult Function(BlocAuthStateNoAuth value) noAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BlocAuthStateAuth value)? auth,
-    TResult? Function(BlocAuthStateOnline value)? online,
-    TResult? Function(BlocAuthStateOffline value)? offline,
+    TResult? Function(BlocAuthStateAuthed value)? authed,
+    TResult? Function(BlocAuthStateNoAuth value)? noAuth,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlocAuthStateAuth value)? auth,
-    TResult Function(BlocAuthStateOnline value)? online,
-    TResult Function(BlocAuthStateOffline value)? offline,
+    TResult Function(BlocAuthStateAuthed value)? authed,
+    TResult Function(BlocAuthStateNoAuth value)? noAuth,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,8 +119,8 @@ class _$BlocAuthStateAuth implements BlocAuthStateAuth {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
-    required TResult Function() online,
-    required TResult Function() offline,
+    required TResult Function(AppChatsState data) authed,
+    required TResult Function() noAuth,
   }) {
     return auth();
   }
@@ -129,8 +129,8 @@ class _$BlocAuthStateAuth implements BlocAuthStateAuth {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
-    TResult? Function()? online,
-    TResult? Function()? offline,
+    TResult? Function(AppChatsState data)? authed,
+    TResult? Function()? noAuth,
   }) {
     return auth?.call();
   }
@@ -139,8 +139,8 @@ class _$BlocAuthStateAuth implements BlocAuthStateAuth {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
-    TResult Function()? online,
-    TResult Function()? offline,
+    TResult Function(AppChatsState data)? authed,
+    TResult Function()? noAuth,
     required TResult orElse(),
   }) {
     if (auth != null) {
@@ -153,8 +153,8 @@ class _$BlocAuthStateAuth implements BlocAuthStateAuth {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BlocAuthStateAuth value) auth,
-    required TResult Function(BlocAuthStateOnline value) online,
-    required TResult Function(BlocAuthStateOffline value) offline,
+    required TResult Function(BlocAuthStateAuthed value) authed,
+    required TResult Function(BlocAuthStateNoAuth value) noAuth,
   }) {
     return auth(this);
   }
@@ -163,8 +163,8 @@ class _$BlocAuthStateAuth implements BlocAuthStateAuth {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BlocAuthStateAuth value)? auth,
-    TResult? Function(BlocAuthStateOnline value)? online,
-    TResult? Function(BlocAuthStateOffline value)? offline,
+    TResult? Function(BlocAuthStateAuthed value)? authed,
+    TResult? Function(BlocAuthStateNoAuth value)? noAuth,
   }) {
     return auth?.call(this);
   }
@@ -173,8 +173,8 @@ class _$BlocAuthStateAuth implements BlocAuthStateAuth {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlocAuthStateAuth value)? auth,
-    TResult Function(BlocAuthStateOnline value)? online,
-    TResult Function(BlocAuthStateOffline value)? offline,
+    TResult Function(BlocAuthStateAuthed value)? authed,
+    TResult Function(BlocAuthStateNoAuth value)? noAuth,
     required TResult orElse(),
   }) {
     if (auth != null) {
@@ -189,35 +189,186 @@ abstract class BlocAuthStateAuth implements BlocAuthState {
 }
 
 /// @nodoc
-abstract class _$$BlocAuthStateOnlineCopyWith<$Res> {
-  factory _$$BlocAuthStateOnlineCopyWith(_$BlocAuthStateOnline value,
-          $Res Function(_$BlocAuthStateOnline) then) =
-      __$$BlocAuthStateOnlineCopyWithImpl<$Res>;
+abstract class _$$BlocAuthStateAuthedCopyWith<$Res> {
+  factory _$$BlocAuthStateAuthedCopyWith(_$BlocAuthStateAuthed value,
+          $Res Function(_$BlocAuthStateAuthed) then) =
+      __$$BlocAuthStateAuthedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppChatsState data});
+
+  $AppChatsStateCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$BlocAuthStateOnlineCopyWithImpl<$Res>
-    extends _$BlocAuthStateCopyWithImpl<$Res, _$BlocAuthStateOnline>
-    implements _$$BlocAuthStateOnlineCopyWith<$Res> {
-  __$$BlocAuthStateOnlineCopyWithImpl(
-      _$BlocAuthStateOnline _value, $Res Function(_$BlocAuthStateOnline) _then)
+class __$$BlocAuthStateAuthedCopyWithImpl<$Res>
+    extends _$BlocAuthStateCopyWithImpl<$Res, _$BlocAuthStateAuthed>
+    implements _$$BlocAuthStateAuthedCopyWith<$Res> {
+  __$$BlocAuthStateAuthedCopyWithImpl(
+      _$BlocAuthStateAuthed _value, $Res Function(_$BlocAuthStateAuthed) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$BlocAuthStateAuthed(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as AppChatsState,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppChatsStateCopyWith<$Res> get data {
+    return $AppChatsStateCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$BlocAuthStateOnline implements BlocAuthStateOnline {
-  const _$BlocAuthStateOnline();
+class _$BlocAuthStateAuthed implements BlocAuthStateAuthed {
+  const _$BlocAuthStateAuthed(this.data);
+
+  @override
+  final AppChatsState data;
 
   @override
   String toString() {
-    return 'BlocAuthState.online()';
+    return 'BlocAuthState.authed(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BlocAuthStateOnline);
+        (other.runtimeType == runtimeType &&
+            other is _$BlocAuthStateAuthed &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BlocAuthStateAuthedCopyWith<_$BlocAuthStateAuthed> get copyWith =>
+      __$$BlocAuthStateAuthedCopyWithImpl<_$BlocAuthStateAuthed>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() auth,
+    required TResult Function(AppChatsState data) authed,
+    required TResult Function() noAuth,
+  }) {
+    return authed(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? auth,
+    TResult? Function(AppChatsState data)? authed,
+    TResult? Function()? noAuth,
+  }) {
+    return authed?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? auth,
+    TResult Function(AppChatsState data)? authed,
+    TResult Function()? noAuth,
+    required TResult orElse(),
+  }) {
+    if (authed != null) {
+      return authed(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BlocAuthStateAuth value) auth,
+    required TResult Function(BlocAuthStateAuthed value) authed,
+    required TResult Function(BlocAuthStateNoAuth value) noAuth,
+  }) {
+    return authed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BlocAuthStateAuth value)? auth,
+    TResult? Function(BlocAuthStateAuthed value)? authed,
+    TResult? Function(BlocAuthStateNoAuth value)? noAuth,
+  }) {
+    return authed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BlocAuthStateAuth value)? auth,
+    TResult Function(BlocAuthStateAuthed value)? authed,
+    TResult Function(BlocAuthStateNoAuth value)? noAuth,
+    required TResult orElse(),
+  }) {
+    if (authed != null) {
+      return authed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BlocAuthStateAuthed implements BlocAuthState {
+  const factory BlocAuthStateAuthed(final AppChatsState data) =
+      _$BlocAuthStateAuthed;
+
+  AppChatsState get data;
+  @JsonKey(ignore: true)
+  _$$BlocAuthStateAuthedCopyWith<_$BlocAuthStateAuthed> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BlocAuthStateNoAuthCopyWith<$Res> {
+  factory _$$BlocAuthStateNoAuthCopyWith(_$BlocAuthStateNoAuth value,
+          $Res Function(_$BlocAuthStateNoAuth) then) =
+      __$$BlocAuthStateNoAuthCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BlocAuthStateNoAuthCopyWithImpl<$Res>
+    extends _$BlocAuthStateCopyWithImpl<$Res, _$BlocAuthStateNoAuth>
+    implements _$$BlocAuthStateNoAuthCopyWith<$Res> {
+  __$$BlocAuthStateNoAuthCopyWithImpl(
+      _$BlocAuthStateNoAuth _value, $Res Function(_$BlocAuthStateNoAuth) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BlocAuthStateNoAuth implements BlocAuthStateNoAuth {
+  const _$BlocAuthStateNoAuth();
+
+  @override
+  String toString() {
+    return 'BlocAuthState.noAuth()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BlocAuthStateNoAuth);
   }
 
   @override
@@ -227,32 +378,32 @@ class _$BlocAuthStateOnline implements BlocAuthStateOnline {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
-    required TResult Function() online,
-    required TResult Function() offline,
+    required TResult Function(AppChatsState data) authed,
+    required TResult Function() noAuth,
   }) {
-    return online();
+    return noAuth();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
-    TResult? Function()? online,
-    TResult? Function()? offline,
+    TResult? Function(AppChatsState data)? authed,
+    TResult? Function()? noAuth,
   }) {
-    return online?.call();
+    return noAuth?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
-    TResult Function()? online,
-    TResult Function()? offline,
+    TResult Function(AppChatsState data)? authed,
+    TResult Function()? noAuth,
     required TResult orElse(),
   }) {
-    if (online != null) {
-      return online();
+    if (noAuth != null) {
+      return noAuth();
     }
     return orElse();
   }
@@ -261,145 +412,37 @@ class _$BlocAuthStateOnline implements BlocAuthStateOnline {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(BlocAuthStateAuth value) auth,
-    required TResult Function(BlocAuthStateOnline value) online,
-    required TResult Function(BlocAuthStateOffline value) offline,
+    required TResult Function(BlocAuthStateAuthed value) authed,
+    required TResult Function(BlocAuthStateNoAuth value) noAuth,
   }) {
-    return online(this);
+    return noAuth(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(BlocAuthStateAuth value)? auth,
-    TResult? Function(BlocAuthStateOnline value)? online,
-    TResult? Function(BlocAuthStateOffline value)? offline,
+    TResult? Function(BlocAuthStateAuthed value)? authed,
+    TResult? Function(BlocAuthStateNoAuth value)? noAuth,
   }) {
-    return online?.call(this);
+    return noAuth?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(BlocAuthStateAuth value)? auth,
-    TResult Function(BlocAuthStateOnline value)? online,
-    TResult Function(BlocAuthStateOffline value)? offline,
+    TResult Function(BlocAuthStateAuthed value)? authed,
+    TResult Function(BlocAuthStateNoAuth value)? noAuth,
     required TResult orElse(),
   }) {
-    if (online != null) {
-      return online(this);
+    if (noAuth != null) {
+      return noAuth(this);
     }
     return orElse();
   }
 }
 
-abstract class BlocAuthStateOnline implements BlocAuthState {
-  const factory BlocAuthStateOnline() = _$BlocAuthStateOnline;
-}
-
-/// @nodoc
-abstract class _$$BlocAuthStateOfflineCopyWith<$Res> {
-  factory _$$BlocAuthStateOfflineCopyWith(_$BlocAuthStateOffline value,
-          $Res Function(_$BlocAuthStateOffline) then) =
-      __$$BlocAuthStateOfflineCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BlocAuthStateOfflineCopyWithImpl<$Res>
-    extends _$BlocAuthStateCopyWithImpl<$Res, _$BlocAuthStateOffline>
-    implements _$$BlocAuthStateOfflineCopyWith<$Res> {
-  __$$BlocAuthStateOfflineCopyWithImpl(_$BlocAuthStateOffline _value,
-      $Res Function(_$BlocAuthStateOffline) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BlocAuthStateOffline implements BlocAuthStateOffline {
-  const _$BlocAuthStateOffline();
-
-  @override
-  String toString() {
-    return 'BlocAuthState.offline()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BlocAuthStateOffline);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() auth,
-    required TResult Function() online,
-    required TResult Function() offline,
-  }) {
-    return offline();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? auth,
-    TResult? Function()? online,
-    TResult? Function()? offline,
-  }) {
-    return offline?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? auth,
-    TResult Function()? online,
-    TResult Function()? offline,
-    required TResult orElse(),
-  }) {
-    if (offline != null) {
-      return offline();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlocAuthStateAuth value) auth,
-    required TResult Function(BlocAuthStateOnline value) online,
-    required TResult Function(BlocAuthStateOffline value) offline,
-  }) {
-    return offline(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlocAuthStateAuth value)? auth,
-    TResult? Function(BlocAuthStateOnline value)? online,
-    TResult? Function(BlocAuthStateOffline value)? offline,
-  }) {
-    return offline?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlocAuthStateAuth value)? auth,
-    TResult Function(BlocAuthStateOnline value)? online,
-    TResult Function(BlocAuthStateOffline value)? offline,
-    required TResult orElse(),
-  }) {
-    if (offline != null) {
-      return offline(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BlocAuthStateOffline implements BlocAuthState {
-  const factory BlocAuthStateOffline() = _$BlocAuthStateOffline;
+abstract class BlocAuthStateNoAuth implements BlocAuthState {
+  const factory BlocAuthStateNoAuth() = _$BlocAuthStateNoAuth;
 }

@@ -1,8 +1,9 @@
 // Package imports:
-import 'package:fl_chat/data/repositories/repository_chat/repository_chat.dart';
-import 'package:fl_chat/domain/states/bloc_chat_state/app_chat_state.dart';
-import 'package:fl_chat/domain/states/bloc_chat_state/bloc_chat_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+// Project imports:
+import 'package:fl_chat/data/repositories/repository_chat/repository_chat.dart';
+import 'package:fl_chat/domain/states/bloc_chat_state/bloc_chat_state.dart';
 
 part 'bloc_chat_events.dart';
 
@@ -12,8 +13,6 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
   BlocChat({required this.repo}) : super(const BlocChatState.init()) {
     on<BlocChatEventChatUpdate>(_handleUpdate);
   }
-
-  late AppChatState _chatState;
 
   Future<void> _handleUpdate(
     BlocChatEventChatUpdate event,

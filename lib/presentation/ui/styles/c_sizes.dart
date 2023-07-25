@@ -8,5 +8,7 @@ class CSizes {
 
   static double fieldMin = 54.0;
   static double fieldMax = 162.0;
-  static double icon = 24.0;
+  static double fieldIcon = 24.0;
+
+  static double emptyIcon = 96.0;
 }

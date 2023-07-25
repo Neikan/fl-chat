@@ -24,7 +24,7 @@ class CMenuItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11.0),
         decoration: BoxDecoration(
           color: isSelected ? CColors.menuBackgroundSelected : CColors.menuBackground,
-          borderRadius: CDecoration.brMessageOut,
+          borderRadius: CDecoration.brDefault,
         ),
         child: Text(item.toString(), style: CTextStyle.menuItem),
       ),

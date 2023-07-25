@@ -11,8 +11,8 @@ part 'api_create_chat.g.dart';
 class ApiChat with _$ApiChat {
   const factory ApiChat({
     @Default(AppChatAction.create_chat) AppChatAction action,
-    String? id,
-    String? title,
+    required String id,
+    required String title,
   }) = _ApiChat;
 
   factory ApiChat.fromJson(Map<String, dynamic> json) => _$ApiChatFromJson(json);

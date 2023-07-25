@@ -1,31 +1,28 @@
 part of '../screen_chat.dart';
 
 class _CContact extends StatelessWidget {
+  final String title;
+
+  const _CContact({
+    required this.title,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
-      child: Row(
-        children: [
-          _CContactAvatar(),
-          Padding(
-            padding: const EdgeInsets.only(left: 9.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Виртуальный помощник', style: CTextStyle.contactName),
-                BlocBuilder<BlocAuth, BlocAuthState>(
-                  builder: (context, state) => state.when(
-                    auth: () => const _CContactStatus(status: 'Connecting...'),
-                    online: () => const _CContactStatus(status: 'Online'),
-                    offline: () => const _CContactStatus(status: 'Offline'),
-                  ),
-                ),
-              ],
-            ),
+    return Row(
+      children: [
+        _CContactAvatar(),
+        Padding(
+          padding: CSpaces.pl1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: CTextStyle.contactName),
+              _CContactStatus(),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -48,35 +45,27 @@ class _CContactAvatar extends StatelessWidget {
   }
 }
 
-// ToDo По идее состояние статуса должно быть получено откуда-то извне
+// ToDo По идее статус тоже должен быть получен по сети, например, сервер виртуального помощника может быть оффлайн
 class _CContactStatus extends StatelessWidget {
-  final String status;
-
-  const _CContactStatus({
-    required this.status,
-  });
-
   @override
   Widget build(BuildContext context) {
-    final isOnline = status == 'Online';
-
     return Padding(
-      padding: const EdgeInsets.only(top: 5.0),
+      padding: CSpaces.pt025,
       child: Row(
         children: [
           Container(
             width: CSizes.contactStatus,
             height: CSizes.contactStatus,
             decoration: BoxDecoration(
-              color: isOnline ? CColors.contactStatusOnline : CColors.contactStatusOffline,
+              color: CColors.contactStatusOnline,
               borderRadius: CDecoration.brContactStatus,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 5.0),
+          const Padding(
+            padding: CSpaces.pl025,
             child: Text(
-              status,
-              style: isOnline ? CTextStyle.contactStatusOnline : CTextStyle.contactStatusOffline,
+              labelsStatus,
+              style: CTextStyle.contactStatusOnline,
             ),
           ),
         ],

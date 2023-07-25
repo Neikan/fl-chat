@@ -19,21 +19,21 @@ mixin _$BlocChatState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(AppChatState state) loaded,
+    required TResult Function(AppChatsState state) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(AppChatState state)? loaded,
+    TResult? Function(AppChatsState state)? loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(AppChatState state)? loaded,
+    TResult Function(AppChatsState state)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -119,7 +119,7 @@ class _$BlocChatStateInit implements BlocChatStateInit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(AppChatState state) loaded,
+    required TResult Function(AppChatsState state) loaded,
     required TResult Function(String error) error,
   }) {
     return init();
@@ -129,7 +129,7 @@ class _$BlocChatStateInit implements BlocChatStateInit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(AppChatState state)? loaded,
+    TResult? Function(AppChatsState state)? loaded,
     TResult? Function(String error)? error,
   }) {
     return init?.call();
@@ -139,7 +139,7 @@ class _$BlocChatStateInit implements BlocChatStateInit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(AppChatState state)? loaded,
+    TResult Function(AppChatsState state)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -194,9 +194,9 @@ abstract class _$$BlocChatStateLoadedCopyWith<$Res> {
           $Res Function(_$BlocChatStateLoaded) then) =
       __$$BlocChatStateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({AppChatState state});
+  $Res call({AppChatsState state});
 
-  $AppChatStateCopyWith<$Res> get state;
+  $AppChatsStateCopyWith<$Res> get state;
 }
 
 /// @nodoc
@@ -216,14 +216,14 @@ class __$$BlocChatStateLoadedCopyWithImpl<$Res>
       null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as AppChatState,
+              as AppChatsState,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AppChatStateCopyWith<$Res> get state {
-    return $AppChatStateCopyWith<$Res>(_value.state, (value) {
+  $AppChatsStateCopyWith<$Res> get state {
+    return $AppChatsStateCopyWith<$Res>(_value.state, (value) {
       return _then(_value.copyWith(state: value));
     });
   }
@@ -235,7 +235,7 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
   const _$BlocChatStateLoaded(this.state);
 
   @override
-  final AppChatState state;
+  final AppChatsState state;
 
   @override
   String toString() {
@@ -264,7 +264,7 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(AppChatState state) loaded,
+    required TResult Function(AppChatsState state) loaded,
     required TResult Function(String error) error,
   }) {
     return loaded(state);
@@ -274,7 +274,7 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(AppChatState state)? loaded,
+    TResult? Function(AppChatsState state)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loaded?.call(state);
@@ -284,7 +284,7 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(AppChatState state)? loaded,
+    TResult Function(AppChatsState state)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -330,10 +330,10 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
 }
 
 abstract class BlocChatStateLoaded implements BlocChatState {
-  const factory BlocChatStateLoaded(final AppChatState state) =
+  const factory BlocChatStateLoaded(final AppChatsState state) =
       _$BlocChatStateLoaded;
 
-  AppChatState get state;
+  AppChatsState get state;
   @JsonKey(ignore: true)
   _$$BlocChatStateLoadedCopyWith<_$BlocChatStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -405,7 +405,7 @@ class _$BlocChatStateError implements BlocChatStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(AppChatState state) loaded,
+    required TResult Function(AppChatsState state) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -415,7 +415,7 @@ class _$BlocChatStateError implements BlocChatStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(AppChatState state)? loaded,
+    TResult? Function(AppChatsState state)? loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -425,7 +425,7 @@ class _$BlocChatStateError implements BlocChatStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(AppChatState state)? loaded,
+    TResult Function(AppChatsState state)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

@@ -14,10 +14,8 @@ abstract class CDecoration {
     bottomRight: Radius.circular(25.0),
   );
 
-  static BorderRadius brMessageOut = BorderRadius.circular(15.0);
-
+  static BorderRadius brDefault = BorderRadius.circular(15.0);
   static BorderRadius brContactStatus = BorderRadius.circular(3.0);
-
   static BorderRadius brMessageField = BorderRadius.circular(30.0);
 
   // Shadows

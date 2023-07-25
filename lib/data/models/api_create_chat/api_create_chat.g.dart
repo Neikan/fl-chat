@@ -9,8 +9,8 @@ part of 'api_create_chat.dart';
 _$_ApiChat _$$_ApiChatFromJson(Map<String, dynamic> json) => _$_ApiChat(
       action: $enumDecodeNullable(_$AppChatActionEnumMap, json['action']) ??
           AppChatAction.create_chat,
-      id: json['id'] as String?,
-      title: json['title'] as String?,
+      id: json['id'] as String,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$_ApiChatToJson(_$_ApiChat instance) =>

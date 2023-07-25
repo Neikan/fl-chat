@@ -10,11 +10,13 @@ import 'package:fl_chat/data/services/service_chat.dart';
 class ServiceChatImp implements ServiceChat {
   final WebSocketChannel _channel = IOWebSocketChannel.connect(
     apiUrl,
-    connectTimeout: const Duration(minutes: 15),
+    connectTimeout: const Duration(minutes: 1),
   );
 
   @override
   Stream<dynamic> auth(String token) {
+    _channel.ready;
+
     _channel.sink.add('HELLO');
     _channel.sink.add('AUTH $token');
 

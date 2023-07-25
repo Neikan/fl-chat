@@ -21,8 +21,8 @@ ApiChat _$ApiChatFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiChat {
   AppChatAction get action => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $ApiChatCopyWith<$Res> {
   factory $ApiChatCopyWith(ApiChat value, $Res Function(ApiChat) then) =
       _$ApiChatCopyWithImpl<$Res, ApiChat>;
   @useResult
-  $Res call({AppChatAction action, String? id, String? title});
+  $Res call({AppChatAction action, String id, String title});
 }
 
 /// @nodoc
@@ -51,22 +51,22 @@ class _$ApiChatCopyWithImpl<$Res, $Val extends ApiChat>
   @override
   $Res call({
     Object? action = null,
-    Object? id = freezed,
-    Object? title = freezed,
+    Object? id = null,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
               as AppChatAction,
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: freezed == title
+              as String,
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$_ApiChatCopyWith<$Res> implements $ApiChatCopyWith<$Res> {
       __$$_ApiChatCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AppChatAction action, String? id, String? title});
+  $Res call({AppChatAction action, String id, String title});
 }
 
 /// @nodoc
@@ -92,22 +92,22 @@ class __$$_ApiChatCopyWithImpl<$Res>
   @override
   $Res call({
     Object? action = null,
-    Object? id = freezed,
-    Object? title = freezed,
+    Object? id = null,
+    Object? title = null,
   }) {
     return _then(_$_ApiChat(
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
               as AppChatAction,
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: freezed == title
+              as String,
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -116,7 +116,9 @@ class __$$_ApiChatCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiChat implements _ApiChat {
   const _$_ApiChat(
-      {this.action = AppChatAction.create_chat, this.id, this.title});
+      {this.action = AppChatAction.create_chat,
+      required this.id,
+      required this.title});
 
   factory _$_ApiChat.fromJson(Map<String, dynamic> json) =>
       _$$_ApiChatFromJson(json);
@@ -125,9 +127,9 @@ class _$_ApiChat implements _ApiChat {
   @JsonKey()
   final AppChatAction action;
   @override
-  final String? id;
+  final String id;
   @override
-  final String? title;
+  final String title;
 
   @override
   String toString() {
@@ -165,17 +167,17 @@ class _$_ApiChat implements _ApiChat {
 abstract class _ApiChat implements ApiChat {
   const factory _ApiChat(
       {final AppChatAction action,
-      final String? id,
-      final String? title}) = _$_ApiChat;
+      required final String id,
+      required final String title}) = _$_ApiChat;
 
   factory _ApiChat.fromJson(Map<String, dynamic> json) = _$_ApiChat.fromJson;
 
   @override
   AppChatAction get action;
   @override
-  String? get id;
+  String get id;
   @override
-  String? get title;
+  String get title;
   @override
   @JsonKey(ignore: true)
   _$$_ApiChatCopyWith<_$_ApiChat> get copyWith =>
