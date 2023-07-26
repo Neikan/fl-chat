@@ -2,4 +2,8 @@ part of 'bloc_chat.dart';
 
 abstract class BlocChatEvent {}
 
-class BlocChatEventChatUpdate extends BlocChatEvent {}
+class BlocChatEventChatUpdate extends BlocChatEvent {
+  final AppChatMessage? message;
+
+  BlocChatEventChatUpdate({this.message});
+}

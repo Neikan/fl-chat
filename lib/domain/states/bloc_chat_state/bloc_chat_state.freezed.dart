@@ -16,49 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BlocChatState {
+  AppChatState? get messages => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function(AppChatsState state) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppChatState? messages) messages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function(AppChatsState state)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppChatState? messages)? messages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(AppChatsState state)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppChatState? messages)? messages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BlocChatStateInit value) init,
-    required TResult Function(BlocChatStateLoaded value) loaded,
-    required TResult Function(BlocChatStateError value) error,
+    required TResult Function(BlocChatStateLoaded value) messages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlocChatStateInit value)? init,
-    TResult? Function(BlocChatStateLoaded value)? loaded,
-    TResult? Function(BlocChatStateError value)? error,
+    TResult? Function(BlocChatStateLoaded value)? messages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlocChatStateInit value)? init,
-    TResult Function(BlocChatStateLoaded value)? loaded,
-    TResult Function(BlocChatStateError value)? error,
+    TResult Function(BlocChatStateLoaded value)? messages,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BlocChatStateCopyWith<BlocChatState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -67,6 +60,10 @@ abstract class $BlocChatStateCopyWith<$Res> {
   factory $BlocChatStateCopyWith(
           BlocChatState value, $Res Function(BlocChatState) then) =
       _$BlocChatStateCopyWithImpl<$Res, BlocChatState>;
+  @useResult
+  $Res call({AppChatState? messages});
+
+  $AppChatStateCopyWith<$Res>? get messages;
 }
 
 /// @nodoc
@@ -78,125 +75,45 @@ class _$BlocChatStateCopyWithImpl<$Res, $Val extends BlocChatState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
 
-/// @nodoc
-abstract class _$$BlocChatStateInitCopyWith<$Res> {
-  factory _$$BlocChatStateInitCopyWith(
-          _$BlocChatStateInit value, $Res Function(_$BlocChatStateInit) then) =
-      __$$BlocChatStateInitCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BlocChatStateInitCopyWithImpl<$Res>
-    extends _$BlocChatStateCopyWithImpl<$Res, _$BlocChatStateInit>
-    implements _$$BlocChatStateInitCopyWith<$Res> {
-  __$$BlocChatStateInitCopyWithImpl(
-      _$BlocChatStateInit _value, $Res Function(_$BlocChatStateInit) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BlocChatStateInit implements BlocChatStateInit {
-  const _$BlocChatStateInit();
-
+  @pragma('vm:prefer-inline')
   @override
-  String toString() {
-    return 'BlocChatState.init()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BlocChatStateInit);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function(AppChatsState state) loaded,
-    required TResult Function(String error) error,
+  $Res call({
+    Object? messages = freezed,
   }) {
-    return init();
+    return _then(_value.copyWith(
+      messages: freezed == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as AppChatState?,
+    ) as $Val);
   }
 
   @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function(AppChatsState state)? loaded,
-    TResult? Function(String error)? error,
-  }) {
-    return init?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(AppChatsState state)? loaded,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (init != null) {
-      return init();
+  @pragma('vm:prefer-inline')
+  $AppChatStateCopyWith<$Res>? get messages {
+    if (_value.messages == null) {
+      return null;
     }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlocChatStateInit value) init,
-    required TResult Function(BlocChatStateLoaded value) loaded,
-    required TResult Function(BlocChatStateError value) error,
-  }) {
-    return init(this);
+    return $AppChatStateCopyWith<$Res>(_value.messages!, (value) {
+      return _then(_value.copyWith(messages: value) as $Val);
+    });
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlocChatStateInit value)? init,
-    TResult? Function(BlocChatStateLoaded value)? loaded,
-    TResult? Function(BlocChatStateError value)? error,
-  }) {
-    return init?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlocChatStateInit value)? init,
-    TResult Function(BlocChatStateLoaded value)? loaded,
-    TResult Function(BlocChatStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (init != null) {
-      return init(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BlocChatStateInit implements BlocChatState {
-  const factory BlocChatStateInit() = _$BlocChatStateInit;
 }
 
 /// @nodoc
-abstract class _$$BlocChatStateLoadedCopyWith<$Res> {
+abstract class _$$BlocChatStateLoadedCopyWith<$Res>
+    implements $BlocChatStateCopyWith<$Res> {
   factory _$$BlocChatStateLoadedCopyWith(_$BlocChatStateLoaded value,
           $Res Function(_$BlocChatStateLoaded) then) =
       __$$BlocChatStateLoadedCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({AppChatsState state});
+  $Res call({AppChatState? messages});
 
-  $AppChatsStateCopyWith<$Res> get state;
+  @override
+  $AppChatStateCopyWith<$Res>? get messages;
 }
 
 /// @nodoc
@@ -210,36 +127,28 @@ class __$$BlocChatStateLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? state = null,
+    Object? messages = freezed,
   }) {
     return _then(_$BlocChatStateLoaded(
-      null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as AppChatsState,
+      freezed == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as AppChatState?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppChatsStateCopyWith<$Res> get state {
-    return $AppChatsStateCopyWith<$Res>(_value.state, (value) {
-      return _then(_value.copyWith(state: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$BlocChatStateLoaded implements BlocChatStateLoaded {
-  const _$BlocChatStateLoaded(this.state);
+  const _$BlocChatStateLoaded(this.messages);
 
   @override
-  final AppChatsState state;
+  final AppChatState? messages;
 
   @override
   String toString() {
-    return 'BlocChatState.loaded(state: $state)';
+    return 'BlocChatState.messages(messages: $messages)';
   }
 
   @override
@@ -247,11 +156,12 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BlocChatStateLoaded &&
-            (identical(other.state, state) || other.state == state));
+            (identical(other.messages, messages) ||
+                other.messages == messages));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, state);
+  int get hashCode => Object.hash(runtimeType, messages);
 
   @JsonKey(ignore: true)
   @override
@@ -263,33 +173,27 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function(AppChatsState state) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppChatState? messages) messages,
   }) {
-    return loaded(state);
+    return messages(this.messages);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function(AppChatsState state)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppChatState? messages)? messages,
   }) {
-    return loaded?.call(state);
+    return messages?.call(this.messages);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(AppChatsState state)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppChatState? messages)? messages,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(state);
+    if (messages != null) {
+      return messages(this.messages);
     }
     return orElse();
   }
@@ -297,184 +201,40 @@ class _$BlocChatStateLoaded implements BlocChatStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BlocChatStateInit value) init,
-    required TResult Function(BlocChatStateLoaded value) loaded,
-    required TResult Function(BlocChatStateError value) error,
+    required TResult Function(BlocChatStateLoaded value) messages,
   }) {
-    return loaded(this);
+    return messages(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlocChatStateInit value)? init,
-    TResult? Function(BlocChatStateLoaded value)? loaded,
-    TResult? Function(BlocChatStateError value)? error,
+    TResult? Function(BlocChatStateLoaded value)? messages,
   }) {
-    return loaded?.call(this);
+    return messages?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlocChatStateInit value)? init,
-    TResult Function(BlocChatStateLoaded value)? loaded,
-    TResult Function(BlocChatStateError value)? error,
+    TResult Function(BlocChatStateLoaded value)? messages,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (messages != null) {
+      return messages(this);
     }
     return orElse();
   }
 }
 
 abstract class BlocChatStateLoaded implements BlocChatState {
-  const factory BlocChatStateLoaded(final AppChatsState state) =
+  const factory BlocChatStateLoaded(final AppChatState? messages) =
       _$BlocChatStateLoaded;
 
-  AppChatsState get state;
+  @override
+  AppChatState? get messages;
+  @override
   @JsonKey(ignore: true)
   _$$BlocChatStateLoadedCopyWith<_$BlocChatStateLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$BlocChatStateErrorCopyWith<$Res> {
-  factory _$$BlocChatStateErrorCopyWith(_$BlocChatStateError value,
-          $Res Function(_$BlocChatStateError) then) =
-      __$$BlocChatStateErrorCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String error});
-}
-
-/// @nodoc
-class __$$BlocChatStateErrorCopyWithImpl<$Res>
-    extends _$BlocChatStateCopyWithImpl<$Res, _$BlocChatStateError>
-    implements _$$BlocChatStateErrorCopyWith<$Res> {
-  __$$BlocChatStateErrorCopyWithImpl(
-      _$BlocChatStateError _value, $Res Function(_$BlocChatStateError) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? error = null,
-  }) {
-    return _then(_$BlocChatStateError(
-      null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$BlocChatStateError implements BlocChatStateError {
-  const _$BlocChatStateError(this.error);
-
-  @override
-  final String error;
-
-  @override
-  String toString() {
-    return 'BlocChatState.error(error: $error)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BlocChatStateError &&
-            (identical(other.error, error) || other.error == error));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, error);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BlocChatStateErrorCopyWith<_$BlocChatStateError> get copyWith =>
-      __$$BlocChatStateErrorCopyWithImpl<_$BlocChatStateError>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function(AppChatsState state) loaded,
-    required TResult Function(String error) error,
-  }) {
-    return error(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function(AppChatsState state)? loaded,
-    TResult? Function(String error)? error,
-  }) {
-    return error?.call(this.error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function(AppChatsState state)? loaded,
-    TResult Function(String error)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BlocChatStateInit value) init,
-    required TResult Function(BlocChatStateLoaded value) loaded,
-    required TResult Function(BlocChatStateError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BlocChatStateInit value)? init,
-    TResult? Function(BlocChatStateLoaded value)? loaded,
-    TResult? Function(BlocChatStateError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BlocChatStateInit value)? init,
-    TResult Function(BlocChatStateLoaded value)? loaded,
-    TResult Function(BlocChatStateError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BlocChatStateError implements BlocChatState {
-  const factory BlocChatStateError(final String error) = _$BlocChatStateError;
-
-  String get error;
-  @JsonKey(ignore: true)
-  _$$BlocChatStateErrorCopyWith<_$BlocChatStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

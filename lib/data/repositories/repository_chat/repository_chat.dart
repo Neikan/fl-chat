@@ -1,5 +1,5 @@
-abstract class RepositoryChat {
-  const RepositoryChat();
+// abstract class RepositoryChat {
+//   const RepositoryChat();
 
-  void send(dynamic data);
-}
+//   void send(dynamic data);
+// }

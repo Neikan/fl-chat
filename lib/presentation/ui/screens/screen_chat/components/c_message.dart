@@ -6,13 +6,13 @@ import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
 
-class CMenuItem extends StatelessWidget {
-  final dynamic item;
+class CMessageItem extends StatelessWidget {
+  final dynamic message;
   final bool isSelected;
 
-  const CMenuItem({
+  const CMessageItem({
     super.key,
-    required this.item,
+    required this.message,
     this.isSelected = false,
   });
 
@@ -26,7 +26,7 @@ class CMenuItem extends StatelessWidget {
           color: isSelected ? CColors.menuBackgroundSelected : CColors.menuBackground,
           borderRadius: CDecoration.brDefault,
         ),
-        child: Text(item.toString(), style: CTextStyle.menuItem),
+        child: Text(message.toString(), style: CTextStyle.menuItem),
       ),
     );
   }

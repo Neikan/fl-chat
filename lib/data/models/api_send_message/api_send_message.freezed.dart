@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'api_message_outgoing.dart';
+part of 'api_send_message.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ApiMessageOutgoing _$ApiMessageOutgoingFromJson(Map<String, dynamic> json) {
-  return _ApiMessageOutgoing.fromJson(json);
+ApiSendMessage _$ApiSendMessageFromJson(Map<String, dynamic> json) {
+  return _ApiSendMessage.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ApiMessageOutgoing {
-  AppMessageAction get action => throw _privateConstructorUsedError;
+mixin _$ApiSendMessage {
+  AppChatMessageAction get action => throw _privateConstructorUsedError;
   @JsonKey(name: 'client_message_id')
   String get clientMessageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'chat_id')
@@ -29,27 +29,27 @@ mixin _$ApiMessageOutgoing {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ApiMessageOutgoingCopyWith<ApiMessageOutgoing> get copyWith =>
+  $ApiSendMessageCopyWith<ApiSendMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApiMessageOutgoingCopyWith<$Res> {
-  factory $ApiMessageOutgoingCopyWith(
-          ApiMessageOutgoing value, $Res Function(ApiMessageOutgoing) then) =
-      _$ApiMessageOutgoingCopyWithImpl<$Res, ApiMessageOutgoing>;
+abstract class $ApiSendMessageCopyWith<$Res> {
+  factory $ApiSendMessageCopyWith(
+          ApiSendMessage value, $Res Function(ApiSendMessage) then) =
+      _$ApiSendMessageCopyWithImpl<$Res, ApiSendMessage>;
   @useResult
   $Res call(
-      {AppMessageAction action,
+      {AppChatMessageAction action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'chat_id') String chatId,
       String text});
 }
 
 /// @nodoc
-class _$ApiMessageOutgoingCopyWithImpl<$Res, $Val extends ApiMessageOutgoing>
-    implements $ApiMessageOutgoingCopyWith<$Res> {
-  _$ApiMessageOutgoingCopyWithImpl(this._value, this._then);
+class _$ApiSendMessageCopyWithImpl<$Res, $Val extends ApiSendMessage>
+    implements $ApiSendMessageCopyWith<$Res> {
+  _$ApiSendMessageCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,7 +68,7 @@ class _$ApiMessageOutgoingCopyWithImpl<$Res, $Val extends ApiMessageOutgoing>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppMessageAction,
+              as AppChatMessageAction,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -86,26 +86,26 @@ class _$ApiMessageOutgoingCopyWithImpl<$Res, $Val extends ApiMessageOutgoing>
 }
 
 /// @nodoc
-abstract class _$$_ApiMessageOutgoingCopyWith<$Res>
-    implements $ApiMessageOutgoingCopyWith<$Res> {
-  factory _$$_ApiMessageOutgoingCopyWith(_$_ApiMessageOutgoing value,
-          $Res Function(_$_ApiMessageOutgoing) then) =
-      __$$_ApiMessageOutgoingCopyWithImpl<$Res>;
+abstract class _$$_ApiSendMessageCopyWith<$Res>
+    implements $ApiSendMessageCopyWith<$Res> {
+  factory _$$_ApiSendMessageCopyWith(
+          _$_ApiSendMessage value, $Res Function(_$_ApiSendMessage) then) =
+      __$$_ApiSendMessageCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {AppMessageAction action,
+      {AppChatMessageAction action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'chat_id') String chatId,
       String text});
 }
 
 /// @nodoc
-class __$$_ApiMessageOutgoingCopyWithImpl<$Res>
-    extends _$ApiMessageOutgoingCopyWithImpl<$Res, _$_ApiMessageOutgoing>
-    implements _$$_ApiMessageOutgoingCopyWith<$Res> {
-  __$$_ApiMessageOutgoingCopyWithImpl(
-      _$_ApiMessageOutgoing _value, $Res Function(_$_ApiMessageOutgoing) _then)
+class __$$_ApiSendMessageCopyWithImpl<$Res>
+    extends _$ApiSendMessageCopyWithImpl<$Res, _$_ApiSendMessage>
+    implements _$$_ApiSendMessageCopyWith<$Res> {
+  __$$_ApiSendMessageCopyWithImpl(
+      _$_ApiSendMessage _value, $Res Function(_$_ApiSendMessage) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,11 +116,11 @@ class __$$_ApiMessageOutgoingCopyWithImpl<$Res>
     Object? chatId = null,
     Object? text = null,
   }) {
-    return _then(_$_ApiMessageOutgoing(
+    return _then(_$_ApiSendMessage(
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppMessageAction,
+              as AppChatMessageAction,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -139,19 +139,19 @@ class __$$_ApiMessageOutgoingCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApiMessageOutgoing implements _ApiMessageOutgoing {
-  const _$_ApiMessageOutgoing(
-      {this.action = AppMessageAction.send_message,
+class _$_ApiSendMessage implements _ApiSendMessage {
+  const _$_ApiSendMessage(
+      {this.action = AppChatMessageAction.send_message,
       @JsonKey(name: 'client_message_id') required this.clientMessageId,
       @JsonKey(name: 'chat_id') required this.chatId,
       required this.text});
 
-  factory _$_ApiMessageOutgoing.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiMessageOutgoingFromJson(json);
+  factory _$_ApiSendMessage.fromJson(Map<String, dynamic> json) =>
+      _$$_ApiSendMessageFromJson(json);
 
   @override
   @JsonKey()
-  final AppMessageAction action;
+  final AppChatMessageAction action;
   @override
   @JsonKey(name: 'client_message_id')
   final String clientMessageId;
@@ -163,14 +163,14 @@ class _$_ApiMessageOutgoing implements _ApiMessageOutgoing {
 
   @override
   String toString() {
-    return 'ApiMessageOutgoing(action: $action, clientMessageId: $clientMessageId, chatId: $chatId, text: $text)';
+    return 'ApiSendMessage(action: $action, clientMessageId: $clientMessageId, chatId: $chatId, text: $text)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiMessageOutgoing &&
+            other is _$_ApiSendMessage &&
             (identical(other.action, action) || other.action == action) &&
             (identical(other.clientMessageId, clientMessageId) ||
                 other.clientMessageId == clientMessageId) &&
@@ -186,30 +186,29 @@ class _$_ApiMessageOutgoing implements _ApiMessageOutgoing {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ApiMessageOutgoingCopyWith<_$_ApiMessageOutgoing> get copyWith =>
-      __$$_ApiMessageOutgoingCopyWithImpl<_$_ApiMessageOutgoing>(
-          this, _$identity);
+  _$$_ApiSendMessageCopyWith<_$_ApiSendMessage> get copyWith =>
+      __$$_ApiSendMessageCopyWithImpl<_$_ApiSendMessage>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiMessageOutgoingToJson(
+    return _$$_ApiSendMessageToJson(
       this,
     );
   }
 }
 
-abstract class _ApiMessageOutgoing implements ApiMessageOutgoing {
-  const factory _ApiMessageOutgoing(
-      {final AppMessageAction action,
+abstract class _ApiSendMessage implements ApiSendMessage {
+  const factory _ApiSendMessage(
+      {final AppChatMessageAction action,
       @JsonKey(name: 'client_message_id') required final String clientMessageId,
       @JsonKey(name: 'chat_id') required final String chatId,
-      required final String text}) = _$_ApiMessageOutgoing;
+      required final String text}) = _$_ApiSendMessage;
 
-  factory _ApiMessageOutgoing.fromJson(Map<String, dynamic> json) =
-      _$_ApiMessageOutgoing.fromJson;
+  factory _ApiSendMessage.fromJson(Map<String, dynamic> json) =
+      _$_ApiSendMessage.fromJson;
 
   @override
-  AppMessageAction get action;
+  AppChatMessageAction get action;
   @override
   @JsonKey(name: 'client_message_id')
   String get clientMessageId;
@@ -220,6 +219,6 @@ abstract class _ApiMessageOutgoing implements ApiMessageOutgoing {
   String get text;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiMessageOutgoingCopyWith<_$_ApiMessageOutgoing> get copyWith =>
+  _$$_ApiSendMessageCopyWith<_$_ApiSendMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }

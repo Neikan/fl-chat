@@ -1,5 +1,9 @@
-abstract class ServiceChat {
-  Stream<dynamic> auth(String token);
+import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 
-  void send();
+abstract class ServiceChat {
+  Stream<dynamic> get stream;
+
+  void auth(String token);
+
+  void send({required AppChatMessage message});
 }

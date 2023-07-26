@@ -23,7 +23,7 @@ final menuCreate = ApiMenuCreate(
 
 // Вариант отправки пункта меню клиентом
 const menuForce = ApiMenuForce(
-  action: AppMenuAction.create_menu,
+  action: AppChatMessageAction.force_menu,
   menuId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   valueId: '1c6e1cf4-8824-447b-a017-3e259a6bdafa',
 );

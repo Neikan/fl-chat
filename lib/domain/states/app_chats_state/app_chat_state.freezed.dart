@@ -109,7 +109,7 @@ class __$$_AppChatsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppChatsState implements _AppChatsState {
   const _$_AppChatsState(
-      {required final List<ApiChat>? chats,
+      {final List<ApiChat>? chats,
       required final Map<String, List<dynamic>> messages})
       : _chats = chats,
         _messages = messages;
@@ -172,7 +172,7 @@ class _$_AppChatsState implements _AppChatsState {
 
 abstract class _AppChatsState implements AppChatsState {
   const factory _AppChatsState(
-      {required final List<ApiChat>? chats,
+      {final List<ApiChat>? chats,
       required final Map<String, List<dynamic>> messages}) = _$_AppChatsState;
 
   factory _AppChatsState.fromJson(Map<String, dynamic> json) =

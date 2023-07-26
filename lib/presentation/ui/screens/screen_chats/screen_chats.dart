@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-import 'package:fl_chat/data/models/api_create_chat/api_create_chat.dart';
+import 'package:fl_chat/data/models/api_chat/api_chat.dart';
 import 'package:fl_chat/domain/blocs/bloc_auth/bloc_auth.dart';
 import 'package:fl_chat/domain/states/bloc_auth_state/bloc_auth_state.dart';
 import 'package:fl_chat/presentation/consts/keys.dart';

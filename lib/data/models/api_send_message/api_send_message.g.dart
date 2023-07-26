@@ -1,25 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_menu_force.dart';
+part of 'api_send_message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiMenuForce _$$_ApiMenuForceFromJson(Map<String, dynamic> json) =>
-    _$_ApiMenuForce(
+_$_ApiSendMessage _$$_ApiSendMessageFromJson(Map<String, dynamic> json) =>
+    _$_ApiSendMessage(
       action:
           $enumDecodeNullable(_$AppChatMessageActionEnumMap, json['action']) ??
-              AppChatMessageAction.force_menu,
-      menuId: json['menu_id'] as String,
-      valueId: json['value_id'] as String,
+              AppChatMessageAction.send_message,
+      clientMessageId: json['client_message_id'] as String,
+      chatId: json['chat_id'] as String,
+      text: json['text'] as String,
     );
 
-Map<String, dynamic> _$$_ApiMenuForceToJson(_$_ApiMenuForce instance) =>
+Map<String, dynamic> _$$_ApiSendMessageToJson(_$_ApiSendMessage instance) =>
     <String, dynamic>{
       'action': _$AppChatMessageActionEnumMap[instance.action]!,
-      'menu_id': instance.menuId,
-      'value_id': instance.valueId,
+      'client_message_id': instance.clientMessageId,
+      'chat_id': instance.chatId,
+      'text': instance.text,
     };
 
 const _$AppChatMessageActionEnumMap = {
