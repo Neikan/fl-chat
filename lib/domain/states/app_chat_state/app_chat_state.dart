@@ -9,9 +9,7 @@ part 'app_chat_state.g.dart';
 
 @freezed
 class AppChatState with _$AppChatState {
-  const factory AppChatState({
-    required List<AppChatMessage>? messages,
-  }) = _AppChatState;
+  const factory AppChatState({List<AppChatMessage>? messages}) = _AppChatState;
 
   factory AppChatState.fromJson(Map<String, dynamic> json) => _$AppChatStateFromJson(json);
 }

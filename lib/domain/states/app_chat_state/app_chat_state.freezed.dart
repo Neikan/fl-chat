@@ -97,7 +97,7 @@ class __$$_AppChatStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppChatState implements _AppChatState {
-  const _$_AppChatState({required final List<AppChatMessage>? messages})
+  const _$_AppChatState({final List<AppChatMessage>? messages})
       : _messages = messages;
 
   factory _$_AppChatState.fromJson(Map<String, dynamic> json) =>
@@ -146,7 +146,7 @@ class _$_AppChatState implements _AppChatState {
 }
 
 abstract class _AppChatState implements AppChatState {
-  const factory _AppChatState({required final List<AppChatMessage>? messages}) =
+  const factory _AppChatState({final List<AppChatMessage>? messages}) =
       _$_AppChatState;
 
   factory _AppChatState.fromJson(Map<String, dynamic> json) =

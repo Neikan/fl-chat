@@ -13,22 +13,22 @@ import 'package:fl_chat/data/models/api_chat/api_chat.dart';
 import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
 import 'package:fl_chat/data/models/api_send_message/api_send_message.dart';
 import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
-import 'package:fl_chat/data/services/service_chat.dart';
+import 'package:fl_chat/data/services/service_api.dart';
 
-class ServiceChatImp2 implements ServiceChat {
-  final WebSocketChannel _channel = IOWebSocketChannel.connect(
-    apiUrl,
-    connectTimeout: const Duration(minutes: 1),
-  );
+class ServiceApiImp implements ServiceApi {
+  final WebSocketChannel _channel = IOWebSocketChannel.connect(apiUrl);
 
   // Стрим самого веб-сокета
   final StreamController<dynamic> _channelController = StreamController<dynamic>();
   StreamSink<dynamic> get channelSink => _channel.sink;
   Stream<dynamic> get channelStream => _channel.stream;
 
-  // ToDo Стим для авторизации
+  // Стрим авторизации
+  final StreamController<String> _authController = StreamController<String>();
+  StreamSink<String> get authSink => _authController.sink;
+  Stream<String> get authStream => _authController.stream;
 
-  // стрим для работы с чатами
+  // Cтрим для работы с чатами
   final StreamController<List<ApiChat>> _chatsController = StreamController<List<ApiChat>>();
   StreamSink<List<ApiChat>> get chatsSink => _chatsController.sink;
   Stream<List<ApiChat>> get chatsStream => _chatsController.stream;
@@ -38,11 +38,14 @@ class ServiceChatImp2 implements ServiceChat {
   StreamSink<AppChatMessage> get chatSink => _chatController.sink;
   Stream<AppChatMessage> get chatStream => _chatController.stream;
 
+  // ignore: strict_raw_type
   late StreamSubscription? listener;
 
-  ServiceChatImp2() {
+  ServiceApiImp() {
     listener = channelStream.listen((event) {
-      if (event == 'AUTH') channelSink.add('AUTH testtoken');
+      if (apiActionsAuth.contains(event)) {
+        authSink.add(event);
+      }
 
       try {
         List<ApiChat> chats = List<dynamic>.from(jsonDecode(event.toString())).map((chat) => ApiChat.fromJson(chat)).toList();
@@ -67,7 +70,7 @@ class ServiceChatImp2 implements ServiceChat {
   }
 
   @override
-  void send({required AppChatMessage message}) {
+  void send(AppChatMessage message) {
     String? sendingMessage;
 
     if (message.action == AppActionMessage.send_message) {
@@ -99,6 +102,7 @@ class ServiceChatImp2 implements ServiceChat {
 
     _chatsController.close();
     _chatController.close();
+    _authController.close();
     _channelController.close();
   }
 }

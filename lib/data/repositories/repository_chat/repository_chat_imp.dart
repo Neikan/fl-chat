@@ -1,12 +1,16 @@
-// // Project imports:
-// import 'package:fl_chat/data/repositories/repository_chat/repository_chat.dart';
-// import 'package:fl_chat/data/services/service_chat_imp.dart';
+// Project imports:
+import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
+import 'package:fl_chat/data/repositories/repository_chat/repository_chat.dart';
+import 'package:fl_chat/data/services/service_api_imp.dart';
 
-// class RepositoryChatImp extends RepositoryChat {
-//   RepositoryChatImp();
+class RepositoryChatImp extends RepositoryChat {
+  RepositoryChatImp();
 
-//   @override
-//   void send(dynamic data) {
-//     ServiceChatImp().send();
-//   }
-// }
+  @override
+  Stream<AppChatMessage> get chatStream => ServiceApiImp().chatStream;
+
+  @override
+  void send(AppChatMessage message) {
+    ServiceApiImp().send(message);
+  }
+}

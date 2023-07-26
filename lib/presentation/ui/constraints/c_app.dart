@@ -17,7 +17,7 @@ class CApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BlocAuth(repo: RepositoryAuthImp())..add(BlocAuthEventInit()),
+      create: (_) => BlocAuth(repo: RepositoryAuthImp())..add(BlocAuthEventInit()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: defaultTheme,
