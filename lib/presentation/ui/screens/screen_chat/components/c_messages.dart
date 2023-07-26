@@ -10,10 +10,25 @@ class _CMessages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: false,
-      primary: false,
+      itemBuilder: (context, index) {
+        final message = messages[index];
+
+        final isIncoming = message.action == ApiActionChat.create_message;
+
+        if (isIncoming) {
+          return CMessageIncoming(
+            text: message.text!,
+            date: DateFormat('hh:mm').format(DateTime.now()),
+          );
+        }
+
+        final isMenu = message.action == ApiActionChat.create_menu;
+
+        if (isMenu) return CMenu(message: message);
+
+        return CMessageOutgoing(text: message.text!);
+      },
       itemCount: messages.length,
-      itemBuilder: (_, index) => CMessageItem(message: messages[index]),
     );
   }
 }

@@ -8,3 +8,12 @@ final apiActionsAuth = <String>[
   ApiActionAuth.AUTH_OK.name,
   ApiActionAuth.AUTH_ERR.name,
 ];
+
+final apiActionsServer = <ApiActionChat>[
+  ApiActionChat.create_message,
+  ApiActionChat.create_menu,
+];
+
+final apiActionsClient = <ApiActionChat>[
+  ApiActionChat.send_message,
+];

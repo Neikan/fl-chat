@@ -9,7 +9,7 @@ const mockMessageCreate = ApiMessageIncoming(
   clientMessageId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   messageId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   chatId: '12124214',
-  text: 'Some text',
+  text: 'Входящий очень длинный текст с очень важной информацией об очень значимом событии в современной реальности',
   username: 'Username',
 );
 
@@ -17,5 +17,5 @@ const mockMessageCreate = ApiMessageIncoming(
 const mockMessageSend = ApiSendMessage(
   clientMessageId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   chatId: '2bf2bd70-8785-4735-91af-2edfb9021672',
-  text: 'menu',
+  text: 'Исходящий очень длинный текст с очень важной информацией об очень значимом событии в современной реальности',
 );

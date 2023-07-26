@@ -19,8 +19,16 @@ class CSpaces {
   static const pl1 = EdgeInsets.only(left: 16.0);
   static const pr1 = EdgeInsets.only(right: 16.0);
 
+  static const ph05 = EdgeInsets.symmetric(horizontal: 8.0);
   static const ph1 = EdgeInsets.symmetric(horizontal: 16.0);
+
+  static const pv05 = EdgeInsets.symmetric(vertical: 8.0);
   static const pv1 = EdgeInsets.symmetric(vertical: 16.0);
+
+  static const ph05v1 = EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0);
+
+  static const ph1v05 = EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0);
+  static const ph1v075 = EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0);
 
   static const p05 = EdgeInsets.all(8.0);
   static const p1 = EdgeInsets.all(16.0);

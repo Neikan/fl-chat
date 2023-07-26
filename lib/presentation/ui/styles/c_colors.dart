@@ -22,6 +22,9 @@ class CColors {
   static const Color messageInBackground = white;
   static const Color messageInBorder = Color(0xFFF3F4F7);
 
+  static const Color messageOut = white;
+  static const Color messageOutBackground = blue;
+
   static const Color menuText = white;
   static const Color menuBackgroundSelected = blue;
   static const Color menuBackground = gray;

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 // Project imports:
@@ -16,7 +17,9 @@ import 'package:fl_chat/presentation/consts/translations.dart';
 import 'package:fl_chat/presentation/ui/components/c_icon.dart';
 import 'package:fl_chat/presentation/ui/components/c_text_field.dart';
 import 'package:fl_chat/presentation/ui/constraints/c_app_bar.dart';
-import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message.dart';
+import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_menu.dart';
+import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message_incoming.dart';
+import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message_outgoing.dart';
 import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_sizes.dart';

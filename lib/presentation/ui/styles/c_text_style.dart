@@ -25,6 +25,11 @@ abstract class CTextStyle {
     fontWeight: FontWeight.w500,
   );
 
+  static const TextStyle messageOut = TextStyle(
+    color: CColors.messageOut,
+    fontSize: 14.0,
+  );
+
   static const TextStyle messageIn = TextStyle(
     color: CColors.messageIn,
     fontSize: 14.0,
