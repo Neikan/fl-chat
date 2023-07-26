@@ -40,7 +40,7 @@ class CDataEmpty extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: CSpaces.p1,
+                    padding: CSpaces.p16,
                     child: icon ??
                         Icon(
                           Icons.error_outline,
@@ -49,7 +49,7 @@ class CDataEmpty extends StatelessWidget {
                         ),
                   ),
                   Padding(
-                    padding: CSpaces.ph1,
+                    padding: CSpaces.ph16,
                     child: Text(
                       message ?? labelsError[keyTitle]!,
                       style: CTextStyle.emptyMessage,
@@ -58,7 +58,7 @@ class CDataEmpty extends StatelessWidget {
                   ),
                   if (description != null)
                     Padding(
-                      padding: CSpaces.p1,
+                      padding: CSpaces.p16,
                       child: Text(
                         description!,
                         style: CTextStyle.emptyDescription,

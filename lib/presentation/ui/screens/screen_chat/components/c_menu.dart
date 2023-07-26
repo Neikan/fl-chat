@@ -21,12 +21,15 @@ class CMenu extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(message.title!, style: CTextStyle.messageIn),
+        Padding(
+          padding: CSpaces.pb8,
+          child: Text(message.title!, style: CTextStyle.messageIn),
+        ),
         ...List.generate(message.menu!.length, (index) {
           final menuItem = message.menu![index];
 
           return Padding(
-            padding: CSpaces.pv05,
+            padding: CSpaces.pb16,
             child: Ink(
               decoration: BoxDecoration(
                 borderRadius: CDecoration.brDefault,
@@ -36,7 +39,7 @@ class CMenu extends StatelessWidget {
                 borderRadius: CDecoration.brDefault,
                 onTap: () {},
                 child: Padding(
-                  padding: CSpaces.ph1v075,
+                  padding: CSpaces.ph16v12,
                   child: Text(menuItem.title, style: CTextStyle.menuItem),
                 ),
               ),

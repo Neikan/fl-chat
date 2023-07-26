@@ -10,25 +10,22 @@ class _CMessages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: messages.length,
+      shrinkWrap: true,
+      physics: const BouncingScrollPhysics(
+        parent: AlwaysScrollableScrollPhysics(),
+      ),
       itemBuilder: (context, index) {
         final message = messages[index];
 
         final isIncoming = message.action == ApiActionChat.create_message;
-
-        if (isIncoming) {
-          return CMessageIncoming(
-            text: message.text!,
-            date: DateFormat('hh:mm').format(DateTime.now()),
-          );
-        }
-
         final isMenu = message.action == ApiActionChat.create_menu;
 
+        if (isIncoming) return CMessageIncoming(message: message);
         if (isMenu) return CMenu(message: message);
 
-        return CMessageOutgoing(text: message.text!);
+        return CMessageOutgoing(message: message);
       },
-      itemCount: messages.length,
     );
   }
 }

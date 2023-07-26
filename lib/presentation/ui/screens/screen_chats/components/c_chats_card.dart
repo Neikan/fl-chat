@@ -11,7 +11,7 @@ class _CChatsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        contentPadding: CSpaces.ph1,
+        contentPadding: CSpaces.ph16,
         leading: const Icon(Icons.chat_outlined),
         minLeadingWidth: 0.0,
         title: Text(chat.title, style: CTextStyle.chatsCardTitle),

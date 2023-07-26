@@ -13,7 +13,7 @@ class _CContact extends StatelessWidget {
       children: [
         _CContactAvatar(),
         Padding(
-          padding: CSpaces.pl1,
+          padding: CSpaces.pl16,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,7 +50,7 @@ class _CContactStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: CSpaces.pt025,
+      padding: CSpaces.pt4,
       child: Row(
         children: [
           Container(
@@ -62,7 +62,7 @@ class _CContactStatus extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: CSpaces.pl025,
+            padding: CSpaces.pl4,
             child: Text(
               labelsStatus,
               style: CTextStyle.contactStatusOnline,

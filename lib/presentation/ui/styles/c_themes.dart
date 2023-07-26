@@ -54,7 +54,7 @@ final _listTileTheme = ListTileThemeData(
 final _cardTheme = CardTheme(
   color: CColors.white,
   elevation: 0.2,
-  margin: CSpaces.p1,
+  margin: CSpaces.p16,
   shape: RoundedRectangleBorder(
     borderRadius: CDecoration.brDefault,
   ),

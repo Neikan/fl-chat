@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 // Project imports:
@@ -55,7 +54,7 @@ class _ScreenChatState extends State<ScreenChat> {
         ),
       ),
       body: Padding(
-        padding: CSpaces.p2,
+        padding: CSpaces.p24,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

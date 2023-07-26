@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -21,8 +22,9 @@ class CTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ToDo исправить фон
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: CSpaces.pv16,
       child: Container(
         decoration: ShapeDecoration(
           color: CColors.white,

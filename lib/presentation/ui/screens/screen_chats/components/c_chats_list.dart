@@ -24,7 +24,7 @@ class _CChatsList extends StatelessWidget {
     return CRefresh(
       onRefresh: onRefresh,
       child: ListView.builder(
-        padding: CSpaces.p1,
+        padding: CSpaces.p16,
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
