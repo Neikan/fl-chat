@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fl_chat/data/models/api_chat/api_chat.dart';
 import 'package:fl_chat/domain/blocs/bloc_auth/bloc_auth.dart';
 import 'package:fl_chat/domain/blocs/bloc_chats/bloc_chats.dart';
+import 'package:fl_chat/domain/states/bloc_auth_state/bloc_auth_state.dart';
 import 'package:fl_chat/domain/states/bloc_chats_state/bloc_chats_state.dart';
 import 'package:fl_chat/presentation/consts/keys.dart';
 import 'package:fl_chat/presentation/consts/routes.dart';
@@ -37,14 +38,23 @@ class ScreenChats extends StatelessWidget {
     return Scaffold(
       appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
       body: SafeArea(
-        child: BlocBuilder<BlocChats, BlocChatsState>(
+        child: BlocBuilder<BlocAuth, BlocAuthState>(
           builder: (_, state) => state.when(
-            init: () => const CLoader(),
-            loaded: (data) => _CChatsList(
-              chats: data.chats,
-              onRefresh: handleRefresh,
+            auth: () => const CLoader(),
+            authed: () => BlocBuilder<BlocChats, BlocChatsState>(
+              builder: (_, state) => state.when(
+                init: () => const CLoader(),
+                loaded: (data) => _CChatsList(
+                  chats: data.chats,
+                  onRefresh: handleRefresh,
+                ),
+                error: () => CDataEmpty(
+                  onRefresh: handleRefresh,
+                  description: labelsError[keyContent]!,
+                ),
+              ),
             ),
-            error: () => CDataEmpty(
+            noAuth: () => CDataEmpty(
               onRefresh: handleRefresh,
               description: labelsError[keyContent]!,
             ),

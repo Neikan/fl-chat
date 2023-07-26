@@ -28,5 +28,5 @@ const _$AppActionMessageEnumMap = {
   AppActionMessage.send_message: 'send_message',
   AppActionMessage.create_menu: 'create_menu',
   AppActionMessage.force_menu: 'force_menu',
-  AppActionMessage.message_delivery_confirn: 'message_delivery_confirn',
+  AppActionMessage.message_delivery_confirm: 'message_delivery_confirm',
 };

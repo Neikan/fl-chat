@@ -1,28 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_menu_create.dart';
+part of 'api_message_delivery_confirm.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiMenuCreate _$$_ApiMenuCreateFromJson(Map<String, dynamic> json) =>
-    _$_ApiMenuCreate(
+_$_ApiMessageDeliveryConfirm _$$_ApiMessageDeliveryConfirmFromJson(
+        Map<String, dynamic> json) =>
+    _$_ApiMessageDeliveryConfirm(
       action: $enumDecodeNullable(_$AppActionMessageEnumMap, json['action']) ??
-          AppActionMessage.create_menu,
-      title: json['title'] as String? ?? 'Выберите нужный пункт',
-      id: json['id'] as String,
-      menu: (json['menu'] as List<dynamic>)
-          .map((e) => ApiMenuItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
+          AppActionMessage.message_delivery_confirm,
+      clientMessageId: json['client_message_id'] as String,
+      messageId: json['message_id'] as String,
+      chatId: json['chat_id'] as String,
+      ctime: json['ctime'] as String,
     );
 
-Map<String, dynamic> _$$_ApiMenuCreateToJson(_$_ApiMenuCreate instance) =>
+Map<String, dynamic> _$$_ApiMessageDeliveryConfirmToJson(
+        _$_ApiMessageDeliveryConfirm instance) =>
     <String, dynamic>{
       'action': _$AppActionMessageEnumMap[instance.action]!,
-      'title': instance.title,
-      'id': instance.id,
-      'menu': instance.menu,
+      'client_message_id': instance.clientMessageId,
+      'message_id': instance.messageId,
+      'chat_id': instance.chatId,
+      'ctime': instance.ctime,
     };
 
 const _$AppActionMessageEnumMap = {
