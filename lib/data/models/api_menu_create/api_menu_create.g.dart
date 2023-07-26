@@ -8,8 +8,8 @@ part of 'api_menu_create.dart';
 
 _$_ApiMenuCreate _$$_ApiMenuCreateFromJson(Map<String, dynamic> json) =>
     _$_ApiMenuCreate(
-      action: $enumDecodeNullable(_$AppActionMessageEnumMap, json['action']) ??
-          AppActionMessage.create_menu,
+      action: $enumDecodeNullable(_$ApiActionChatEnumMap, json['action']) ??
+          ApiActionChat.create_menu,
       title: json['title'] as String? ?? 'Выберите нужный пункт',
       id: json['id'] as String,
       menu: (json['menu'] as List<dynamic>)
@@ -19,16 +19,16 @@ _$_ApiMenuCreate _$$_ApiMenuCreateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ApiMenuCreateToJson(_$_ApiMenuCreate instance) =>
     <String, dynamic>{
-      'action': _$AppActionMessageEnumMap[instance.action]!,
+      'action': _$ApiActionChatEnumMap[instance.action]!,
       'title': instance.title,
       'id': instance.id,
       'menu': instance.menu,
     };
 
-const _$AppActionMessageEnumMap = {
-  AppActionMessage.create_message: 'create_message',
-  AppActionMessage.send_message: 'send_message',
-  AppActionMessage.create_menu: 'create_menu',
-  AppActionMessage.force_menu: 'force_menu',
-  AppActionMessage.message_delivery_confirm: 'message_delivery_confirm',
+const _$ApiActionChatEnumMap = {
+  ApiActionChat.create_message: 'create_message',
+  ApiActionChat.send_message: 'send_message',
+  ApiActionChat.create_menu: 'create_menu',
+  ApiActionChat.force_menu: 'force_menu',
+  ApiActionChat.message_delivery_confirm: 'message_delivery_confirm',
 };

@@ -20,7 +20,7 @@ ApiChat _$ApiChatFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiChat {
-  ApiActionChat get action => throw _privateConstructorUsedError;
+  ApiActionChats get action => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $ApiChatCopyWith<$Res> {
   factory $ApiChatCopyWith(ApiChat value, $Res Function(ApiChat) then) =
       _$ApiChatCopyWithImpl<$Res, ApiChat>;
   @useResult
-  $Res call({ApiActionChat action, String id, String title});
+  $Res call({ApiActionChats action, String id, String title});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$ApiChatCopyWithImpl<$Res, $Val extends ApiChat>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as ApiActionChat,
+              as ApiActionChats,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$_ApiChatCopyWith<$Res> implements $ApiChatCopyWith<$Res> {
       __$$_ApiChatCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ApiActionChat action, String id, String title});
+  $Res call({ApiActionChats action, String id, String title});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_ApiChatCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as ApiActionChat,
+              as ApiActionChats,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ class __$$_ApiChatCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiChat implements _ApiChat {
   const _$_ApiChat(
-      {this.action = ApiActionChat.create_chat,
+      {this.action = ApiActionChats.create_chat,
       required this.id,
       required this.title});
 
@@ -125,7 +125,7 @@ class _$_ApiChat implements _ApiChat {
 
   @override
   @JsonKey()
-  final ApiActionChat action;
+  final ApiActionChats action;
   @override
   final String id;
   @override
@@ -166,14 +166,14 @@ class _$_ApiChat implements _ApiChat {
 
 abstract class _ApiChat implements ApiChat {
   const factory _ApiChat(
-      {final ApiActionChat action,
+      {final ApiActionChats action,
       required final String id,
       required final String title}) = _$_ApiChat;
 
   factory _ApiChat.fromJson(Map<String, dynamic> json) = _$_ApiChat.fromJson;
 
   @override
-  ApiActionChat get action;
+  ApiActionChats get action;
   @override
   String get id;
   @override

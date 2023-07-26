@@ -80,7 +80,7 @@ class _ScreenChatState extends State<ScreenChat> {
   void _handleSend() {
     if (_controller.text.trim().isNotEmpty) {
       final newMessage = AppChatMessage(
-        action: AppActionMessage.send_message,
+        action: ApiActionChat.send_message,
         chatId: widget.chat.id,
         text: _controller.text.trim(),
         clientMessageId: const Uuid().v4(),

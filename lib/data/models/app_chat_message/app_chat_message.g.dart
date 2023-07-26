@@ -8,7 +8,7 @@ part of 'app_chat_message.dart';
 
 _$_AppChatMessage _$$_AppChatMessageFromJson(Map<String, dynamic> json) =>
     _$_AppChatMessage(
-      action: $enumDecode(_$AppActionMessageEnumMap, json['action']),
+      action: $enumDecode(_$ApiActionChatEnumMap, json['action']),
       clientMessageId: json['client_message_id'] as String?,
       chatId: json['chat_id'] as String?,
       text: json['text'] as String?,
@@ -25,7 +25,7 @@ _$_AppChatMessage _$$_AppChatMessageFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_AppChatMessageToJson(_$_AppChatMessage instance) =>
     <String, dynamic>{
-      'action': _$AppActionMessageEnumMap[instance.action]!,
+      'action': _$ApiActionChatEnumMap[instance.action]!,
       'client_message_id': instance.clientMessageId,
       'chat_id': instance.chatId,
       'text': instance.text,
@@ -38,10 +38,10 @@ Map<String, dynamic> _$$_AppChatMessageToJson(_$_AppChatMessage instance) =>
       'value_id': instance.valueId,
     };
 
-const _$AppActionMessageEnumMap = {
-  AppActionMessage.create_message: 'create_message',
-  AppActionMessage.send_message: 'send_message',
-  AppActionMessage.create_menu: 'create_menu',
-  AppActionMessage.force_menu: 'force_menu',
-  AppActionMessage.message_delivery_confirm: 'message_delivery_confirm',
+const _$ApiActionChatEnumMap = {
+  ApiActionChat.create_message: 'create_message',
+  ApiActionChat.send_message: 'send_message',
+  ApiActionChat.create_menu: 'create_menu',
+  ApiActionChat.force_menu: 'force_menu',
+  ApiActionChat.message_delivery_confirm: 'message_delivery_confirm',
 };

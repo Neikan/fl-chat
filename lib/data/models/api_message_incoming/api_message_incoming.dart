@@ -10,7 +10,7 @@ part 'api_message_incoming.g.dart';
 @freezed
 class ApiMessageIncoming with _$ApiMessageIncoming {
   const factory ApiMessageIncoming({
-    @Default(AppActionMessage.send_message) AppActionMessage action,
+    @Default(ApiActionChat.send_message) ApiActionChat action,
     @JsonKey(name: 'client_message_id') required String clientMessageId,
     @JsonKey(name: 'message_id') required String messageId,
     @JsonKey(name: 'chat_id') required String chatId,

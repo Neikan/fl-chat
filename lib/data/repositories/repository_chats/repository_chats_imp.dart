@@ -7,7 +7,7 @@ class RepositoryChatsImp extends RepositoryChats {
   RepositoryChatsImp();
 
   @override
-  Stream<List<ApiChat>> get chatsStream => ServiceApiImp().chatsStream;
+  Stream<List<ApiChat>> get chatsStream => ServiceApiImp.instance.chatsStream;
 
   @override
   void create() {}

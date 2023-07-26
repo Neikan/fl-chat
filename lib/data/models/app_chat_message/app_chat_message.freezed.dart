@@ -20,7 +20,7 @@ AppChatMessage _$AppChatMessageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppChatMessage {
-  AppActionMessage get action => throw _privateConstructorUsedError;
+  ApiActionChat get action => throw _privateConstructorUsedError;
   @JsonKey(name: 'client_message_id')
   String? get clientMessageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'chat_id')
@@ -50,7 +50,7 @@ abstract class $AppChatMessageCopyWith<$Res> {
       _$AppChatMessageCopyWithImpl<$Res, AppChatMessage>;
   @useResult
   $Res call(
-      {AppActionMessage action,
+      {ApiActionChat action,
       @JsonKey(name: 'client_message_id') String? clientMessageId,
       @JsonKey(name: 'chat_id') String? chatId,
       String? text,
@@ -92,7 +92,7 @@ class _$AppChatMessageCopyWithImpl<$Res, $Val extends AppChatMessage>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       clientMessageId: freezed == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -146,7 +146,7 @@ abstract class _$$_AppChatMessageCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AppActionMessage action,
+      {ApiActionChat action,
       @JsonKey(name: 'client_message_id') String? clientMessageId,
       @JsonKey(name: 'chat_id') String? chatId,
       String? text,
@@ -186,7 +186,7 @@ class __$$_AppChatMessageCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       clientMessageId: freezed == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -252,7 +252,7 @@ class _$_AppChatMessage implements _AppChatMessage {
       _$$_AppChatMessageFromJson(json);
 
   @override
-  final AppActionMessage action;
+  final ApiActionChat action;
   @override
   @JsonKey(name: 'client_message_id')
   final String? clientMessageId;
@@ -345,7 +345,7 @@ class _$_AppChatMessage implements _AppChatMessage {
 
 abstract class _AppChatMessage implements AppChatMessage {
   const factory _AppChatMessage(
-      {required final AppActionMessage action,
+      {required final ApiActionChat action,
       @JsonKey(name: 'client_message_id') final String? clientMessageId,
       @JsonKey(name: 'chat_id') final String? chatId,
       final String? text,
@@ -361,7 +361,7 @@ abstract class _AppChatMessage implements AppChatMessage {
       _$_AppChatMessage.fromJson;
 
   @override
-  AppActionMessage get action;
+  ApiActionChat get action;
   @override
   @JsonKey(name: 'client_message_id')
   String? get clientMessageId;

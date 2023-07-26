@@ -20,7 +20,7 @@ ApiMenuForce _$ApiMenuForceFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiMenuForce {
-  AppActionMessage get action => throw _privateConstructorUsedError;
+  ApiActionChat get action => throw _privateConstructorUsedError;
   @JsonKey(name: 'menu_id')
   String get menuId => throw _privateConstructorUsedError;
   @JsonKey(name: 'value_id')
@@ -39,7 +39,7 @@ abstract class $ApiMenuForceCopyWith<$Res> {
       _$ApiMenuForceCopyWithImpl<$Res, ApiMenuForce>;
   @useResult
   $Res call(
-      {AppActionMessage action,
+      {ApiActionChat action,
       @JsonKey(name: 'menu_id') String menuId,
       @JsonKey(name: 'value_id') String valueId});
 }
@@ -65,7 +65,7 @@ class _$ApiMenuForceCopyWithImpl<$Res, $Val extends ApiMenuForce>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       menuId: null == menuId
           ? _value.menuId
           : menuId // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_ApiMenuForceCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AppActionMessage action,
+      {ApiActionChat action,
       @JsonKey(name: 'menu_id') String menuId,
       @JsonKey(name: 'value_id') String valueId});
 }
@@ -111,7 +111,7 @@ class __$$_ApiMenuForceCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       menuId: null == menuId
           ? _value.menuId
           : menuId // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ class __$$_ApiMenuForceCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiMenuForce implements _ApiMenuForce {
   const _$_ApiMenuForce(
-      {this.action = AppActionMessage.force_menu,
+      {this.action = ApiActionChat.force_menu,
       @JsonKey(name: 'menu_id') required this.menuId,
       @JsonKey(name: 'value_id') required this.valueId});
 
@@ -137,7 +137,7 @@ class _$_ApiMenuForce implements _ApiMenuForce {
 
   @override
   @JsonKey()
-  final AppActionMessage action;
+  final ApiActionChat action;
   @override
   @JsonKey(name: 'menu_id')
   final String menuId;
@@ -180,7 +180,7 @@ class _$_ApiMenuForce implements _ApiMenuForce {
 
 abstract class _ApiMenuForce implements ApiMenuForce {
   const factory _ApiMenuForce(
-          {final AppActionMessage action,
+          {final ApiActionChat action,
           @JsonKey(name: 'menu_id') required final String menuId,
           @JsonKey(name: 'value_id') required final String valueId}) =
       _$_ApiMenuForce;
@@ -189,7 +189,7 @@ abstract class _ApiMenuForce implements ApiMenuForce {
       _$_ApiMenuForce.fromJson;
 
   @override
-  AppActionMessage get action;
+  ApiActionChat get action;
   @override
   @JsonKey(name: 'menu_id')
   String get menuId;

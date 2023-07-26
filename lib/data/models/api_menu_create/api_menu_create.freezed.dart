@@ -20,7 +20,7 @@ ApiMenuCreate _$ApiMenuCreateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiMenuCreate {
-  AppActionMessage get action => throw _privateConstructorUsedError;
+  ApiActionChat get action => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   List<ApiMenuItem> get menu => throw _privateConstructorUsedError;
@@ -38,10 +38,7 @@ abstract class $ApiMenuCreateCopyWith<$Res> {
       _$ApiMenuCreateCopyWithImpl<$Res, ApiMenuCreate>;
   @useResult
   $Res call(
-      {AppActionMessage action,
-      String title,
-      String id,
-      List<ApiMenuItem> menu});
+      {ApiActionChat action, String title, String id, List<ApiMenuItem> menu});
 }
 
 /// @nodoc
@@ -66,7 +63,7 @@ class _$ApiMenuCreateCopyWithImpl<$Res, $Val extends ApiMenuCreate>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -92,10 +89,7 @@ abstract class _$$_ApiMenuCreateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AppActionMessage action,
-      String title,
-      String id,
-      List<ApiMenuItem> menu});
+      {ApiActionChat action, String title, String id, List<ApiMenuItem> menu});
 }
 
 /// @nodoc
@@ -118,7 +112,7 @@ class __$$_ApiMenuCreateCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -139,7 +133,7 @@ class __$$_ApiMenuCreateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiMenuCreate implements _ApiMenuCreate {
   const _$_ApiMenuCreate(
-      {this.action = AppActionMessage.create_menu,
+      {this.action = ApiActionChat.create_menu,
       this.title = 'Выберите нужный пункт',
       required this.id,
       required final List<ApiMenuItem> menu})
@@ -150,7 +144,7 @@ class _$_ApiMenuCreate implements _ApiMenuCreate {
 
   @override
   @JsonKey()
-  final AppActionMessage action;
+  final ApiActionChat action;
   @override
   @JsonKey()
   final String title;
@@ -201,7 +195,7 @@ class _$_ApiMenuCreate implements _ApiMenuCreate {
 
 abstract class _ApiMenuCreate implements ApiMenuCreate {
   const factory _ApiMenuCreate(
-      {final AppActionMessage action,
+      {final ApiActionChat action,
       final String title,
       required final String id,
       required final List<ApiMenuItem> menu}) = _$_ApiMenuCreate;
@@ -210,7 +204,7 @@ abstract class _ApiMenuCreate implements ApiMenuCreate {
       _$_ApiMenuCreate.fromJson;
 
   @override
-  AppActionMessage get action;
+  ApiActionChat get action;
   @override
   String get title;
   @override

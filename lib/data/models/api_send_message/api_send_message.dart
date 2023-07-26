@@ -10,7 +10,7 @@ part 'api_send_message.g.dart';
 @freezed
 class ApiSendMessage with _$ApiSendMessage {
   const factory ApiSendMessage({
-    @Default(AppActionMessage.send_message) AppActionMessage action,
+    @Default(ApiActionChat.send_message) ApiActionChat action,
     @JsonKey(name: 'client_message_id') required String clientMessageId,
     @JsonKey(name: 'chat_id') required String chatId,
     required String text,

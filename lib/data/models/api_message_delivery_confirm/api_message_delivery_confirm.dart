@@ -10,7 +10,7 @@ part 'api_message_delivery_confirm.g.dart';
 @freezed
 class ApiMessageDeliveryConfirm with _$ApiMessageDeliveryConfirm {
   const factory ApiMessageDeliveryConfirm({
-    @Default(AppActionMessage.message_delivery_confirm) AppActionMessage action,
+    @Default(ApiActionChat.message_delivery_confirm) ApiActionChat action,
     @JsonKey(name: 'client_message_id') required String clientMessageId,
     @JsonKey(name: 'message_id') required String messageId,
     @JsonKey(name: 'chat_id') required String chatId,

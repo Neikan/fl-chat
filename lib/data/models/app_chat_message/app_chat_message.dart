@@ -11,7 +11,7 @@ part 'app_chat_message.g.dart';
 @freezed
 class AppChatMessage with _$AppChatMessage {
   const factory AppChatMessage({
-    required AppActionMessage action,
+    required ApiActionChat action,
     @JsonKey(name: 'client_message_id') String? clientMessageId,
     @JsonKey(name: 'chat_id') String? chatId,
     String? text,

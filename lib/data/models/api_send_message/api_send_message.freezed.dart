@@ -20,7 +20,7 @@ ApiSendMessage _$ApiSendMessageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiSendMessage {
-  AppActionMessage get action => throw _privateConstructorUsedError;
+  ApiActionChat get action => throw _privateConstructorUsedError;
   @JsonKey(name: 'client_message_id')
   String get clientMessageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'chat_id')
@@ -40,7 +40,7 @@ abstract class $ApiSendMessageCopyWith<$Res> {
       _$ApiSendMessageCopyWithImpl<$Res, ApiSendMessage>;
   @useResult
   $Res call(
-      {AppActionMessage action,
+      {ApiActionChat action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'chat_id') String chatId,
       String text});
@@ -68,7 +68,7 @@ class _$ApiSendMessageCopyWithImpl<$Res, $Val extends ApiSendMessage>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$_ApiSendMessageCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AppActionMessage action,
+      {ApiActionChat action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'chat_id') String chatId,
       String text});
@@ -120,7 +120,7 @@ class __$$_ApiSendMessageCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppActionMessage,
+              as ApiActionChat,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ class __$$_ApiSendMessageCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiSendMessage implements _ApiSendMessage {
   const _$_ApiSendMessage(
-      {this.action = AppActionMessage.send_message,
+      {this.action = ApiActionChat.send_message,
       @JsonKey(name: 'client_message_id') required this.clientMessageId,
       @JsonKey(name: 'chat_id') required this.chatId,
       required this.text});
@@ -151,7 +151,7 @@ class _$_ApiSendMessage implements _ApiSendMessage {
 
   @override
   @JsonKey()
-  final AppActionMessage action;
+  final ApiActionChat action;
   @override
   @JsonKey(name: 'client_message_id')
   final String clientMessageId;
@@ -199,7 +199,7 @@ class _$_ApiSendMessage implements _ApiSendMessage {
 
 abstract class _ApiSendMessage implements ApiSendMessage {
   const factory _ApiSendMessage(
-      {final AppActionMessage action,
+      {final ApiActionChat action,
       @JsonKey(name: 'client_message_id') required final String clientMessageId,
       @JsonKey(name: 'chat_id') required final String chatId,
       required final String text}) = _$_ApiSendMessage;
@@ -208,7 +208,7 @@ abstract class _ApiSendMessage implements ApiSendMessage {
       _$_ApiSendMessage.fromJson;
 
   @override
-  AppActionMessage get action;
+  ApiActionChat get action;
   @override
   @JsonKey(name: 'client_message_id')
   String get clientMessageId;

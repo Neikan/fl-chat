@@ -7,10 +7,10 @@ class RepositoryChatImp extends RepositoryChat {
   RepositoryChatImp();
 
   @override
-  Stream<AppChatMessage> get chatStream => ServiceApiImp().chatStream;
+  Stream<AppChatMessage> get chatStream => ServiceApiImp.instance.chatStream;
 
   @override
   void send(AppChatMessage message) {
-    ServiceApiImp().send(message);
+    ServiceApiImp.instance.send(message);
   }
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 // Package imports:
+import 'package:fl_chat/data/mock/chats.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -16,6 +17,32 @@ import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/data/services/service_api.dart';
 
 class ServiceApiImp implements ServiceApi {
+  static final instance = ServiceApiImp._();
+  factory ServiceApiImp() => instance;
+
+  ServiceApiImp._() {
+    listener = channelStream.listen((event) {
+      if (apiActionsAuth.contains(event)) {
+        authSink.add(event);
+      }
+
+      // ToDo замокано для дальнейшей разработки
+      chatsSink.add([chat1, chat2]);
+
+      try {
+        List<ApiChat> chats = List<dynamic>.from(jsonDecode(event.toString())).map((chat) => ApiChat.fromJson(chat)).toList();
+
+        chatsSink.add(chats);
+      } catch (_) {
+        try {
+          AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
+
+          chatSink.add(message);
+        } catch (_) {}
+      }
+    });
+  }
+
   final WebSocketChannel _channel = IOWebSocketChannel.connect(apiUrl);
 
   // Стрим самого веб-сокета
@@ -41,25 +68,25 @@ class ServiceApiImp implements ServiceApi {
   // ignore: strict_raw_type
   late StreamSubscription? listener;
 
-  ServiceApiImp() {
-    listener = channelStream.listen((event) {
-      if (apiActionsAuth.contains(event)) {
-        authSink.add(event);
-      }
+  // ServiceApiImp() {
+  //   listener = channelStream.listen((event) {
+  //     if (apiActionsAuth.contains(event)) {
+  //       authSink.add(event);
+  //     }
 
-      try {
-        List<ApiChat> chats = List<dynamic>.from(jsonDecode(event.toString())).map((chat) => ApiChat.fromJson(chat)).toList();
+  //     try {
+  //       List<ApiChat> chats = List<dynamic>.from(jsonDecode(event.toString())).map((chat) => ApiChat.fromJson(chat)).toList();
 
-        chatsSink.add(chats);
-      } catch (_) {
-        try {
-          AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
+  //       chatsSink.add(chats);
+  //     } catch (_) {
+  //       try {
+  //         AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
 
-          chatSink.add(message);
-        } catch (_) {}
-      }
-    });
-  }
+  //         chatSink.add(message);
+  //       } catch (_) {}
+  //     }
+  //   });
+  // }
 
   @override
   void auth(String token) {
@@ -73,22 +100,22 @@ class ServiceApiImp implements ServiceApi {
   void send(AppChatMessage message) {
     String? sendingMessage;
 
-    if (message.action == AppActionMessage.send_message) {
+    if (message.action == ApiActionChat.send_message) {
       final sendMessage = ApiSendMessage(
         chatId: message.chatId!,
         clientMessageId: message.clientMessageId!,
         text: message.text!,
-        action: AppActionMessage.send_message,
+        action: ApiActionChat.send_message,
       );
 
       sendingMessage = jsonEncode(sendMessage.toJson());
     }
 
-    if (message.action == AppActionMessage.force_menu) {
+    if (message.action == ApiActionChat.force_menu) {
       final forceMenu = ApiMenuForce(
         valueId: message.valueId!,
         menuId: message.menuId!,
-        action: AppActionMessage.send_message,
+        action: ApiActionChat.send_message,
       );
 
       sendingMessage = jsonEncode(forceMenu.toJson());

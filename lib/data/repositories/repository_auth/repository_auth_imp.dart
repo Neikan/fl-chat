@@ -8,13 +8,11 @@ import 'package:fl_chat/data/services/service_api_imp.dart';
 class RepositoryAuthImp extends RepositoryAuth {
   RepositoryAuthImp();
 
-  final service = ServiceApiImp();
-
   @override
-  Stream<String> get authStream => service.authStream;
+  Stream<String> get authStream => ServiceApiImp.instance.authStream;
 
   @override
   void auth(String token) {
-    service.auth(token);
+    ServiceApiImp.instance.auth(token);
   }
 }
