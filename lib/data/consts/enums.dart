@@ -1,14 +1,7 @@
-// ignore: constant_identifier_names
-enum AppMessageAction { create_message, send_message }
+// ignore_for_file: constant_identifier_names
 
-// ignore: constant_identifier_names
-enum AppMenuAction { create_menu, force_menu }
+enum ApiActionAuth { AUTH, AUTH_OK, AUTH_ERR }
 
-// ignore: constant_identifier_names
-enum AppChatAction { create_chat, ping }
+enum ApiActionChat { create_chat }
 
-// ignore: constant_identifier_names
-enum ApiAuthResponse { AUTH, AUTH_OK, AUTH_ERR }
-
-// ignore: constant_identifier_names
-enum AppChatMessageAction { create_message, send_message, create_menu, force_menu }
+enum AppActionMessage { create_message, send_message, create_menu, force_menu, message_delivery_confirn }

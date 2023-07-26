@@ -7,20 +7,19 @@ part of 'api_chat.dart';
 // **************************************************************************
 
 _$_ApiChat _$$_ApiChatFromJson(Map<String, dynamic> json) => _$_ApiChat(
-      action: $enumDecodeNullable(_$AppChatActionEnumMap, json['action']) ??
-          AppChatAction.create_chat,
+      action: $enumDecodeNullable(_$ApiActionChatEnumMap, json['action']) ??
+          ApiActionChat.create_chat,
       id: json['id'] as String,
       title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$_ApiChatToJson(_$_ApiChat instance) =>
     <String, dynamic>{
-      'action': _$AppChatActionEnumMap[instance.action]!,
+      'action': _$ApiActionChatEnumMap[instance.action]!,
       'id': instance.id,
       'title': instance.title,
     };
 
-const _$AppChatActionEnumMap = {
-  AppChatAction.create_chat: 'create_chat',
-  AppChatAction.ping: 'ping',
+const _$ApiActionChatEnumMap = {
+  ApiActionChat.create_chat: 'create_chat',
 };

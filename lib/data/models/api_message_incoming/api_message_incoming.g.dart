@@ -9,8 +9,8 @@ part of 'api_message_incoming.dart';
 _$_ApiMessageIncoming _$$_ApiMessageIncomingFromJson(
         Map<String, dynamic> json) =>
     _$_ApiMessageIncoming(
-      action: $enumDecodeNullable(_$AppMessageActionEnumMap, json['action']) ??
-          AppMessageAction.send_message,
+      action: $enumDecodeNullable(_$AppActionMessageEnumMap, json['action']) ??
+          AppActionMessage.send_message,
       clientMessageId: json['client_message_id'] as String,
       messageId: json['message_id'] as String,
       chatId: json['chat_id'] as String,
@@ -21,7 +21,7 @@ _$_ApiMessageIncoming _$$_ApiMessageIncomingFromJson(
 Map<String, dynamic> _$$_ApiMessageIncomingToJson(
         _$_ApiMessageIncoming instance) =>
     <String, dynamic>{
-      'action': _$AppMessageActionEnumMap[instance.action]!,
+      'action': _$AppActionMessageEnumMap[instance.action]!,
       'client_message_id': instance.clientMessageId,
       'message_id': instance.messageId,
       'chat_id': instance.chatId,
@@ -29,7 +29,10 @@ Map<String, dynamic> _$$_ApiMessageIncomingToJson(
       'username': instance.username,
     };
 
-const _$AppMessageActionEnumMap = {
-  AppMessageAction.create_message: 'create_message',
-  AppMessageAction.send_message: 'send_message',
+const _$AppActionMessageEnumMap = {
+  AppActionMessage.create_message: 'create_message',
+  AppActionMessage.send_message: 'send_message',
+  AppActionMessage.create_menu: 'create_menu',
+  AppActionMessage.force_menu: 'force_menu',
+  AppActionMessage.message_delivery_confirn: 'message_delivery_confirn',
 };

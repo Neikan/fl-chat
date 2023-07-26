@@ -1,9 +1,4 @@
 // Flutter imports:
-import 'package:fl_chat/data/consts/enums.dart';
-import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
-import 'package:fl_chat/domain/blocs/bloc_chat/bloc_chat.dart';
-import 'package:fl_chat/domain/states/bloc_chat_state/bloc_chat_state.dart';
-import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -12,11 +7,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 // Project imports:
+import 'package:fl_chat/data/consts/enums.dart';
 import 'package:fl_chat/data/models/api_chat/api_chat.dart';
+import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
+import 'package:fl_chat/domain/blocs/bloc_chat/bloc_chat.dart';
+import 'package:fl_chat/domain/states/bloc_chat_state/bloc_chat_state.dart';
 import 'package:fl_chat/presentation/consts/translations.dart';
 import 'package:fl_chat/presentation/ui/components/c_icon.dart';
 import 'package:fl_chat/presentation/ui/components/c_text_field.dart';
 import 'package:fl_chat/presentation/ui/constraints/c_app_bar.dart';
+import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message.dart';
 import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_sizes.dart';
@@ -80,13 +80,13 @@ class _ScreenChatState extends State<ScreenChat> {
   void _handleSend() {
     if (_controller.text.trim().isNotEmpty) {
       final newMessage = AppChatMessage(
-        action: AppChatMessageAction.send_message,
+        action: AppActionMessage.send_message,
         chatId: widget.chat.id,
         text: _controller.text.trim(),
         clientMessageId: const Uuid().v4(),
       );
 
-      context.read<BlocChat>().add(BlocChatEventChatUpdate(message: newMessage));
+      context.read<BlocChat>().add(BlocChatEventChatSend(message: newMessage));
 
       _controller.clear();
     }

@@ -7,3 +7,9 @@ class BlocChatEventChatUpdate extends BlocChatEvent {
 
   BlocChatEventChatUpdate({this.message});
 }
+
+class BlocChatEventChatSend extends BlocChatEvent {
+  final AppChatMessage? message;
+
+  BlocChatEventChatSend({this.message});
+}

@@ -8,8 +8,8 @@ part of 'api_menu_create.dart';
 
 _$_ApiMenuCreate _$$_ApiMenuCreateFromJson(Map<String, dynamic> json) =>
     _$_ApiMenuCreate(
-      action: $enumDecodeNullable(_$AppMenuActionEnumMap, json['action']) ??
-          AppMenuAction.create_menu,
+      action: $enumDecodeNullable(_$AppActionMessageEnumMap, json['action']) ??
+          AppActionMessage.create_menu,
       title: json['title'] as String? ?? 'Выберите нужный пункт',
       id: json['id'] as String,
       menu: (json['menu'] as List<dynamic>)
@@ -19,13 +19,16 @@ _$_ApiMenuCreate _$$_ApiMenuCreateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ApiMenuCreateToJson(_$_ApiMenuCreate instance) =>
     <String, dynamic>{
-      'action': _$AppMenuActionEnumMap[instance.action]!,
+      'action': _$AppActionMessageEnumMap[instance.action]!,
       'title': instance.title,
       'id': instance.id,
       'menu': instance.menu,
     };
 
-const _$AppMenuActionEnumMap = {
-  AppMenuAction.create_menu: 'create_menu',
-  AppMenuAction.force_menu: 'force_menu',
+const _$AppActionMessageEnumMap = {
+  AppActionMessage.create_message: 'create_message',
+  AppActionMessage.send_message: 'send_message',
+  AppActionMessage.create_menu: 'create_menu',
+  AppActionMessage.force_menu: 'force_menu',
+  AppActionMessage.message_delivery_confirn: 'message_delivery_confirn',
 };

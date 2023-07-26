@@ -20,7 +20,7 @@ ApiMessageIncoming _$ApiMessageIncomingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ApiMessageIncoming {
-  AppMessageAction get action => throw _privateConstructorUsedError;
+  AppActionMessage get action => throw _privateConstructorUsedError;
   @JsonKey(name: 'client_message_id')
   String get clientMessageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'message_id')
@@ -43,7 +43,7 @@ abstract class $ApiMessageIncomingCopyWith<$Res> {
       _$ApiMessageIncomingCopyWithImpl<$Res, ApiMessageIncoming>;
   @useResult
   $Res call(
-      {AppMessageAction action,
+      {AppActionMessage action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'message_id') String messageId,
       @JsonKey(name: 'chat_id') String chatId,
@@ -75,7 +75,7 @@ class _$ApiMessageIncomingCopyWithImpl<$Res, $Val extends ApiMessageIncoming>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppMessageAction,
+              as AppActionMessage,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ abstract class _$$_ApiMessageIncomingCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AppMessageAction action,
+      {AppActionMessage action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'message_id') String messageId,
       @JsonKey(name: 'chat_id') String chatId,
@@ -139,7 +139,7 @@ class __$$_ApiMessageIncomingCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as AppMessageAction,
+              as AppActionMessage,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ class __$$_ApiMessageIncomingCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiMessageIncoming implements _ApiMessageIncoming {
   const _$_ApiMessageIncoming(
-      {this.action = AppMessageAction.send_message,
+      {this.action = AppActionMessage.send_message,
       @JsonKey(name: 'client_message_id') required this.clientMessageId,
       @JsonKey(name: 'message_id') required this.messageId,
       @JsonKey(name: 'chat_id') required this.chatId,
@@ -180,7 +180,7 @@ class _$_ApiMessageIncoming implements _ApiMessageIncoming {
 
   @override
   @JsonKey()
-  final AppMessageAction action;
+  final AppActionMessage action;
   @override
   @JsonKey(name: 'client_message_id')
   final String clientMessageId;
@@ -238,7 +238,7 @@ class _$_ApiMessageIncoming implements _ApiMessageIncoming {
 
 abstract class _ApiMessageIncoming implements ApiMessageIncoming {
   const factory _ApiMessageIncoming(
-      {final AppMessageAction action,
+      {final AppActionMessage action,
       @JsonKey(name: 'client_message_id') required final String clientMessageId,
       @JsonKey(name: 'message_id') required final String messageId,
       @JsonKey(name: 'chat_id') required final String chatId,
@@ -249,7 +249,7 @@ abstract class _ApiMessageIncoming implements ApiMessageIncoming {
       _$_ApiMessageIncoming.fromJson;
 
   @override
-  AppMessageAction get action;
+  AppActionMessage get action;
   @override
   @JsonKey(name: 'client_message_id')
   String get clientMessageId;

@@ -11,7 +11,7 @@ part 'api_menu_create.g.dart';
 @freezed
 class ApiMenuCreate with _$ApiMenuCreate {
   const factory ApiMenuCreate({
-    @Default(AppMenuAction.create_menu) AppMenuAction action,
+    @Default(AppActionMessage.create_menu) AppActionMessage action,
     @Default('Выберите нужный пункт') String title,
     required String id,
     required List<ApiMenuItem> menu,

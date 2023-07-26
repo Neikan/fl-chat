@@ -10,7 +10,7 @@ part 'api_chat.g.dart';
 @freezed
 class ApiChat with _$ApiChat {
   const factory ApiChat({
-    @Default(AppChatAction.create_chat) AppChatAction action,
+    @Default(ApiActionChat.create_chat) ApiActionChat action,
     required String id,
     required String title,
   }) = _ApiChat;
