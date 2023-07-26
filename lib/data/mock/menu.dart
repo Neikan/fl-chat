@@ -5,7 +5,7 @@ import 'package:fl_chat/data/models/api_menu_create/submodels/api_menu_item.dart
 import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
 
 // Вариант получения меню от сервера
-final menuCreate = ApiMenuCreate(
+final mockMenuCreate = ApiMenuCreate(
   action: ApiActionChat.create_menu,
   id: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   title: 'Выберите нужный пункт',
@@ -22,7 +22,7 @@ final menuCreate = ApiMenuCreate(
 );
 
 // Вариант отправки пункта меню клиентом
-const menuForce = ApiMenuForce(
+const mockMenuForce = ApiMenuForce(
   action: ApiActionChat.force_menu,
   menuId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   valueId: '1c6e1cf4-8824-447b-a017-3e259a6bdafa',

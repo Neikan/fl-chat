@@ -4,7 +4,7 @@ import 'package:fl_chat/data/models/api_message_incoming/api_message_incoming.da
 import 'package:fl_chat/data/models/api_send_message/api_send_message.dart';
 
 // Вариант получения сообщения от сервера (входящее сообщение)
-const messageIncoming = ApiMessageIncoming(
+const mockMessageCreate = ApiMessageIncoming(
   action: ApiActionChat.create_message,
   clientMessageId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   messageId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
@@ -14,7 +14,7 @@ const messageIncoming = ApiMessageIncoming(
 );
 
 // Вариант отправки сообщения клиентом (исходящее сообщение)
-const messageOutgoing1 = ApiSendMessage(
+const mockMessageSend = ApiSendMessage(
   clientMessageId: 'b1bc5a9a-9552-4855-a9a9-4a91c8e56763',
   chatId: '2bf2bd70-8785-4735-91af-2edfb9021672',
   text: 'menu',

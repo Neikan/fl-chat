@@ -3,13 +3,15 @@ import 'dart:async';
 import 'dart:convert';
 
 // Package imports:
-import 'package:fl_chat/data/mock/chats.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 // Project imports:
 import 'package:fl_chat/data/consts/common.dart';
 import 'package:fl_chat/data/consts/enums.dart';
+import 'package:fl_chat/data/mock/chats.dart';
+import 'package:fl_chat/data/mock/menu.dart';
+import 'package:fl_chat/data/mock/messages.dart';
 import 'package:fl_chat/data/models/api_chat/api_chat.dart';
 import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
 import 'package:fl_chat/data/models/api_send_message/api_send_message.dart';
@@ -27,10 +29,22 @@ class ServiceApiImp implements ServiceApi {
       }
 
       // ToDo замокано для дальнейшей разработки
-      chatsSink.add([chat1, chat2]);
+      chatsSink.add([mockChat1, mockChat2]);
+
+      final messageCreate = jsonEncode(mockMessageCreate.toJson());
+      chatSink.add(AppChatMessage.fromJson(jsonDecode(messageCreate)));
+
+      final menuCreate = jsonEncode(mockMenuCreate.toJson());
+      chatSink.add(AppChatMessage.fromJson(jsonDecode(menuCreate)));
+
+      final messageSend = jsonEncode(mockMessageSend.toJson());
+      chatSink.add(AppChatMessage.fromJson(jsonDecode(messageSend)));
+      // ToDo конец
 
       try {
-        List<ApiChat> chats = List<dynamic>.from(jsonDecode(event.toString())).map((chat) => ApiChat.fromJson(chat)).toList();
+        List<ApiChat> chats = List<dynamic>.from(
+          jsonDecode(event.toString()),
+        ).map((chat) => ApiChat.fromJson(chat)).toList();
 
         chatsSink.add(chats);
       } catch (_) {
@@ -67,26 +81,6 @@ class ServiceApiImp implements ServiceApi {
 
   // ignore: strict_raw_type
   late StreamSubscription? listener;
-
-  // ServiceApiImp() {
-  //   listener = channelStream.listen((event) {
-  //     if (apiActionsAuth.contains(event)) {
-  //       authSink.add(event);
-  //     }
-
-  //     try {
-  //       List<ApiChat> chats = List<dynamic>.from(jsonDecode(event.toString())).map((chat) => ApiChat.fromJson(chat)).toList();
-
-  //       chatsSink.add(chats);
-  //     } catch (_) {
-  //       try {
-  //         AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
-
-  //         chatSink.add(message);
-  //       } catch (_) {}
-  //     }
-  //   });
-  // }
 
   @override
   void auth(String token) {
