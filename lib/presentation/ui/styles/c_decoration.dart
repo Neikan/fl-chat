@@ -9,6 +9,7 @@ abstract class CDecoration {
 
   // BorderRadiuses
   static BorderRadius brDefault = BorderRadius.circular(15.0);
+  static BorderRadius brCard = BorderRadius.circular(5.0);
   static BorderRadius brContactStatus = BorderRadius.circular(3.0);
   static BorderRadius brMessageField = BorderRadius.circular(30.0);
 

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:fl_chat/presentation/ui/components/c_divider.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -24,7 +25,7 @@ import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
 
 part 'components/c_chats_card.dart';
-part 'components/c_chats_list.dart';
+part 'components/c_chats.dart';
 
 class ScreenChats extends StatelessWidget {
   const ScreenChats({super.key});
@@ -38,23 +39,14 @@ class ScreenChats extends StatelessWidget {
     return Scaffold(
       appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
       body: SafeArea(
-        child: BlocBuilder<BlocAuth, BlocAuthState>(
+        child: BlocBuilder<BlocChats, BlocChatsState>(
           builder: (_, state) => state.when(
-            auth: () => const CLoader(),
-            authed: () => BlocBuilder<BlocChats, BlocChatsState>(
-              builder: (_, state) => state.when(
-                init: () => const CLoader(),
-                loaded: (data) => _CChatsList(
-                  chats: data.chats,
-                  onRefresh: handleRefresh,
-                ),
-                error: () => CDataEmpty(
-                  onRefresh: handleRefresh,
-                  description: labelsError[keyContent]!,
-                ),
-              ),
+            init: () => const CLoader(),
+            loaded: (data) => _CChats(
+              chats: data.chats,
+              onRefresh: handleRefresh,
             ),
-            noAuth: () => CDataEmpty(
+            error: () => CDataEmpty(
               onRefresh: handleRefresh,
               description: labelsError[keyContent]!,
             ),
@@ -62,5 +54,33 @@ class ScreenChats extends StatelessWidget {
         ),
       ),
     );
+
+    // return Scaffold(
+    //   appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
+    //   body: SafeArea(
+    //     child: BlocBuilder<BlocAuth, BlocAuthState>(
+    //       builder: (_, state) => state.when(
+    //         auth: () => const CLoader(),
+    //         authed: () => BlocBuilder<BlocChats, BlocChatsState>(
+    //           builder: (_, state) => state.when(
+    //             init: () => const CLoader(),
+    //             loaded: (data) => _CChatsList(
+    //               chats: data.chats,
+    //               onRefresh: handleRefresh,
+    //             ),
+    //             error: () => CDataEmpty(
+    //               onRefresh: handleRefresh,
+    //               description: labelsError[keyContent]!,
+    //             ),
+    //           ),
+    //         ),
+    //         noAuth: () => CDataEmpty(
+    //           onRefresh: handleRefresh,
+    //           description: labelsError[keyContent]!,
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }

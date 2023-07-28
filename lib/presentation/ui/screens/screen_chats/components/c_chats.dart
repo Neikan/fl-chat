@@ -1,10 +1,10 @@
 part of '../screen_chats.dart';
 
-class _CChatsList extends StatelessWidget {
+class _CChats extends StatelessWidget {
   final Future<dynamic> Function() onRefresh;
   final List<ApiChat>? chats;
 
-  const _CChatsList({
+  const _CChats({
     required this.onRefresh,
     required this.chats,
   });
@@ -23,8 +23,8 @@ class _CChatsList extends StatelessWidget {
 
     return CRefresh(
       onRefresh: onRefresh,
-      child: ListView.builder(
-        padding: CSpaces.p16,
+      child: ListView.separated(
+        separatorBuilder: (_, __) => const CDivider(),
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),

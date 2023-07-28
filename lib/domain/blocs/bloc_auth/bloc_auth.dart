@@ -26,9 +26,9 @@ class BlocAuth extends Bloc<BlocAuthEvent, BlocAuthState> {
       onData: (data) {
         if (data == ApiActionAuth.AUTH.name) return const BlocAuthState.auth();
 
-        if (data == ApiActionAuth.AUTH_ERR.name) return const BlocAuthState.noAuth();
+        if (data == ApiActionAuth.AUTH_OK.name) return const BlocAuthState.authed();
 
-        return const BlocAuthState.authed();
+        return const BlocAuthState.noAuth();
       },
       onError: (_, __) => const BlocAuthState.noAuth(),
     );

@@ -11,7 +11,7 @@ class _CChatsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        contentPadding: CSpaces.ph16,
+        contentPadding: CSpaces.ph16v8,
         leading: const Icon(Icons.chat_outlined),
         minLeadingWidth: 0.0,
         title: Text(chat.title, style: CTextStyle.chatsCardTitle),
@@ -19,11 +19,7 @@ class _CChatsCard extends StatelessWidget {
         onTap: () {
           final arguments = {keyChat: chat};
 
-          Navigator.pushNamed(
-            context,
-            AppRoutes.routeChat,
-            arguments: arguments,
-          );
+          Navigator.pushNamed(context, AppRoutes.routeChat, arguments: arguments);
         },
       ),
     );

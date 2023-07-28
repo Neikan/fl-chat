@@ -9,6 +9,8 @@ final apiActionsAuth = <String>[
   ApiActionAuth.AUTH_ERR.name,
 ];
 
+final apiActionsChat = ApiActionChat.values.map((value) => value.name).toList();
+
 final apiActionsServer = <ApiActionChat>[
   ApiActionChat.create_message,
   ApiActionChat.create_menu,
