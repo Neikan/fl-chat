@@ -24,18 +24,18 @@ class BlocChats extends Bloc<BlocChatsEvent, BlocChatsState> {
   ) async {
     _chatsState = const AppChatsState(chats: null);
 
-    _chatsState = _chatsState.copyWith(chats: [mockChat1, mockChat2]);
+    // _chatsState = _chatsState.copyWith(chats: [mockChat1, mockChat2]);
 
-    emit(BlocChatsState.loaded(_chatsState));
+    // emit(BlocChatsState.loaded(_chatsState));
 
-    // await emit.forEach(
-    //   repo.chatsStream,
-    //   onData: (chats) {
-    //     _chatsState = _chatsState.copyWith(chats: [mockChat1, mockChat2]);
+    await emit.forEach(
+      repo.chatsStream,
+      onData: (chats) {
+        _chatsState = _chatsState.copyWith(chats: [mockChat1, mockChat2]);
 
-    //     return BlocChatsState.loaded(_chatsState);
-    //   },
-    //   onError: (_, __) => const BlocChatsState.error(),
-    // );
+        return BlocChatsState.loaded(_chatsState);
+      },
+      onError: (_, __) => const BlocChatsState.error(),
+    );
   }
 }

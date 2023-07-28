@@ -36,45 +36,17 @@ class ScreenChats extends StatelessWidget {
       BlocProvider.of<BlocAuth>(context).add(BlocAuthEventInit());
     }
 
-    return Scaffold(
-      appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
-      body: SafeArea(
-        child: BlocBuilder<BlocChats, BlocChatsState>(
-          builder: (_, state) => state.when(
-            init: () => const CLoader(),
-            loaded: (data) => _CChats(
-              chats: data.chats,
-              onRefresh: handleRefresh,
-            ),
-            error: () => CDataEmpty(
-              onRefresh: handleRefresh,
-              description: labelsError[keyContent]!,
-            ),
-          ),
-        ),
-      ),
-    );
-
     // return Scaffold(
     //   appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
     //   body: SafeArea(
-    //     child: BlocBuilder<BlocAuth, BlocAuthState>(
+    //     child: BlocBuilder<BlocChats, BlocChatsState>(
     //       builder: (_, state) => state.when(
-    //         auth: () => const CLoader(),
-    //         authed: () => BlocBuilder<BlocChats, BlocChatsState>(
-    //           builder: (_, state) => state.when(
-    //             init: () => const CLoader(),
-    //             loaded: (data) => _CChatsList(
-    //               chats: data.chats,
-    //               onRefresh: handleRefresh,
-    //             ),
-    //             error: () => CDataEmpty(
-    //               onRefresh: handleRefresh,
-    //               description: labelsError[keyContent]!,
-    //             ),
-    //           ),
+    //         init: () => const CLoader(),
+    //         loaded: (data) => _CChats(
+    //           chats: data.chats,
+    //           onRefresh: handleRefresh,
     //         ),
-    //         noAuth: () => CDataEmpty(
+    //         error: () => CDataEmpty(
     //           onRefresh: handleRefresh,
     //           description: labelsError[keyContent]!,
     //         ),
@@ -82,5 +54,33 @@ class ScreenChats extends StatelessWidget {
     //     ),
     //   ),
     // );
+
+    return Scaffold(
+      appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
+      body: SafeArea(
+        child: BlocBuilder<BlocAuth, BlocAuthState>(
+          builder: (_, state) => state.when(
+            auth: () => const CLoader(),
+            authed: () => BlocBuilder<BlocChats, BlocChatsState>(
+              builder: (_, state) => state.when(
+                init: () => const CLoader(),
+                loaded: (data) => _CChats(
+                  chats: data.chats,
+                  onRefresh: handleRefresh,
+                ),
+                error: () => CDataEmpty(
+                  onRefresh: handleRefresh,
+                  description: labelsError[keyContent]!,
+                ),
+              ),
+            ),
+            noAuth: () => CDataEmpty(
+              onRefresh: handleRefresh,
+              description: labelsError[keyContent]!,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
