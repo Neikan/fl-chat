@@ -1,4 +1,3 @@
-// Dart imports:
 // ignore_for_file: strict_raw_type
 
 // Dart imports:
@@ -20,7 +19,7 @@ import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/data/services/service_api.dart';
 
 class ServiceApiImp implements ServiceApi {
-  final WebSocketChannel _channel = IOWebSocketChannel.connect(apiUrl);
+  late WebSocketChannel _channel;
   late StreamSubscription? _listener;
   late AppChatMessage? _messageApp;
 
@@ -28,27 +27,7 @@ class ServiceApiImp implements ServiceApi {
   factory ServiceApiImp() => instance;
 
   ServiceApiImp._() {
-    _listener = channelStream.listen((event) {
-      final eventSt = event as String;
-
-      if (apiActionsAuth.contains(eventSt)) {
-        authSink.add(eventSt);
-      }
-
-      // Получение списка чатов
-      _handleGetChats(eventSt);
-
-      // Получение подтверждения отправки сообщения
-      _handleUpdateChat(eventSt);
-
-      // ToDo подумать над парсингом - может лучше каждый объект парсить отдельной сущностью, тогда можно также будет проверять event на contains,
-      // ToDo но возникнет другая проблема - рендера элемента.
-      try {
-        AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
-
-        chatSink.add(message);
-      } catch (_) {}
-    });
+    // _handleListen();
   }
 
   // Стрим самого веб-сокета
@@ -73,12 +52,14 @@ class ServiceApiImp implements ServiceApi {
 
   @override
   void auth(String token) {
-    try {
-      _channel.ready;
+    _channel = IOWebSocketChannel.connect(apiUrl);
 
-      channelSink.add('HELLO');
-      channelSink.add('AUTH $token');
-    } catch (_) {}
+    _channel.ready;
+
+    _handleListen();
+
+    channelSink.add('HELLO');
+    channelSink.add('AUTH $token');
   }
 
   @override
@@ -128,5 +109,31 @@ class ServiceApiImp implements ServiceApi {
         chatSink.add(_messageApp!);
       }
     }
+  }
+
+  void _handleListen() {
+    try {
+      _listener = channelStream.listen((event) {
+        final eventSt = event as String;
+
+        if (apiActionsAuth.contains(eventSt)) {
+          authSink.add(eventSt);
+        }
+
+        // Получение списка чатов
+        _handleGetChats(eventSt);
+
+        // Получение подтверждения отправки сообщения
+        _handleUpdateChat(eventSt);
+
+        // ToDo подумать над парсингом - может лучше каждый объект парсить отдельной сущностью, тогда можно также будет проверять event на contains,
+        // ToDo но возникнет другая проблема - рендера элемента.
+        try {
+          AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
+
+          chatSink.add(message);
+        } catch (_) {}
+      });
+    } catch (_) {}
   }
 }

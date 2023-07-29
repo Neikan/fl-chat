@@ -12,7 +12,10 @@ class RepositoryAuthImp extends RepositoryAuth {
   Stream<String> get authStream => ServiceApiImp.instance.authStream;
 
   @override
-  void auth(String token) {
+  void auth() {
+    // ToDo должен браться из хранилки в приложении
+    const token = 'testtoken';
+
     ServiceApiImp.instance.auth(token);
   }
 }

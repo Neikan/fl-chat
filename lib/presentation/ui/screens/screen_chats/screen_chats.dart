@@ -24,6 +24,7 @@ import 'package:fl_chat/presentation/ui/styles/c_sizes.dart';
 import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
 
+part 'components/c_body.dart';
 part 'components/c_chats_card.dart';
 part 'components/c_chats.dart';
 
@@ -36,44 +37,13 @@ class ScreenChats extends StatelessWidget {
       BlocProvider.of<BlocAuth>(context).add(BlocAuthEventInit());
     }
 
-    // return Scaffold(
-    //   appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
-    //   body: SafeArea(
-    //     child: BlocBuilder<BlocChats, BlocChatsState>(
-    //       builder: (_, state) => state.when(
-    //         init: () => const CLoader(),
-    //         loaded: (data) => _CChats(
-    //           chats: data.chats,
-    //           onRefresh: handleRefresh,
-    //         ),
-    //         error: () => CDataEmpty(
-    //           onRefresh: handleRefresh,
-    //           description: labelsError[keyContent]!,
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return Scaffold(
       appBar: CAppBar(titleLabel: labelsChats[CKeys.title]),
       body: SafeArea(
         child: BlocBuilder<BlocAuth, BlocAuthState>(
           builder: (_, state) => state.when(
             auth: () => const CLoader(),
-            authed: () => BlocBuilder<BlocChats, BlocChatsState>(
-              builder: (_, state) => state.when(
-                init: () => const CLoader(),
-                loaded: (data) => _CChats(
-                  chats: data.chats,
-                  onRefresh: handleRefresh,
-                ),
-                error: () => CDataEmpty(
-                  onRefresh: handleRefresh,
-                  description: labelsError[CKeys.content]!,
-                ),
-              ),
-            ),
+            authed: () => _CBody(),
             noAuth: () => CDataEmpty(
               onRefresh: handleRefresh,
               description: labelsError[CKeys.content]!,

@@ -2,7 +2,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-import 'package:fl_chat/data/mock/chats.dart';
+
 import 'package:fl_chat/data/repositories/repository_chats/repository_chats.dart';
 import 'package:fl_chat/domain/states/app_chats_state/app_chats_state.dart';
 import 'package:fl_chat/domain/states/bloc_chats_state/bloc_chats_state.dart';
@@ -27,7 +27,7 @@ class BlocChats extends Bloc<BlocChatsEvent, BlocChatsState> {
     await emit.forEach(
       repo.chatsStream,
       onData: (chats) {
-        _chatsState = _chatsState.copyWith(chats: [mockChat1, mockChat2]);
+        _chatsState = _chatsState.copyWith(chats: chats);
 
         return BlocChatsState.loaded(_chatsState);
       },
