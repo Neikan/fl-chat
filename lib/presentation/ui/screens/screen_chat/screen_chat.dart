@@ -51,7 +51,7 @@ class _ScreenChatState extends State<ScreenChat> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
-            context.read<BlocChat>().add(BlocChatEventClose());
+            context.read<BlocChat>().dispose();
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),

@@ -1,6 +1,7 @@
-// Package imports:
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
@@ -15,21 +16,23 @@ part 'bloc_chat_events.dart';
 class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
   final RepositoryChat repo;
 
+  late AppChatState _chatState;
+  late StreamController<AppChatMessage> _chatController;
+
   BlocChat({required this.repo}) : super(const BlocChatState.messages(null)) {
+    _chatController = StreamController<AppChatMessage>();
+    repo.init(_chatController.sink);
+
     on<BlocChatEventUpdate>(_handleUpdate);
     on<BlocChatEventSendMessage>(_handleSendMessage);
     on<BlocChatEventForceMenu>(_handleForceMenu);
-    on<BlocChatEventClose>(_handleDispose);
   }
-
-  AppChatState _chatState = const AppChatState(messages: []);
-  final StreamController<AppChatMessage> _chatController = StreamController<AppChatMessage>();
 
   Future<void> _handleUpdate(
     BlocChatEventUpdate event,
     Emitter<BlocChatState> emit,
   ) async {
-    repo.init(_chatController.sink);
+    _chatState = const AppChatState(messages: []);
 
     await emit.forEach(
       _chatController.stream,
@@ -52,6 +55,7 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
     BlocChatEventForceMenu event,
     Emitter<BlocChatState> emit,
   ) {
+    // ToDo по-хорошему сообщения внутри приложения должны храниться в какой-то БД, тогда не придется выполнять подобные операции так
     AppChatMessage? selectedMenu = _chatState.messages
         ?.where(
           (message) => message.id != null && message.id! == event.menu.menuId,
@@ -81,10 +85,5 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
     }
   }
 
-  void _handleDispose(
-    BlocChatEventClose event,
-    Emitter<BlocChatState> emit,
-  ) {
-    _chatController.close();
-  }
+  void dispose() => _chatController.close();
 }

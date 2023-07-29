@@ -15,5 +15,3 @@ class BlocChatEventForceMenu extends BlocChatEvent {
 
   BlocChatEventForceMenu(this.menu);
 }
-
-class BlocChatEventClose extends BlocChatEvent {}

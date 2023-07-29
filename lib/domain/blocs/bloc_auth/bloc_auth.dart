@@ -1,3 +1,6 @@
+// Dart imports:
+import 'dart:async';
+
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +14,11 @@ part 'bloc_auth_events.dart';
 class BlocAuth extends Bloc<BlocAuthEvent, BlocAuthState> {
   final RepositoryAuth repo;
 
+  late StreamController<String> _authController;
+
   BlocAuth({required this.repo}) : super(const BlocAuthState.auth()) {
+    repo.auth();
+
     on<BlocAuthEventInit>(_handleInit);
   }
 
@@ -19,8 +26,6 @@ class BlocAuth extends Bloc<BlocAuthEvent, BlocAuthState> {
     BlocAuthEventInit event,
     Emitter<BlocAuthState> emit,
   ) async {
-    repo.auth();
-
     await emit.forEach(
       repo.authStream,
       onData: (data) {
@@ -33,4 +38,6 @@ class BlocAuth extends Bloc<BlocAuthEvent, BlocAuthState> {
       onError: (_, __) => const BlocAuthState.noAuth(),
     );
   }
+
+  void dispose() => _authController.close();
 }

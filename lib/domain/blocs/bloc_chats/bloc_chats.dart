@@ -1,8 +1,10 @@
+// Dart imports:
+import 'dart:async';
+
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
-
 import 'package:fl_chat/data/repositories/repository_chats/repository_chats.dart';
 import 'package:fl_chat/domain/states/app_chats_state/app_chats_state.dart';
 import 'package:fl_chat/domain/states/bloc_chats_state/bloc_chats_state.dart';
@@ -12,11 +14,11 @@ part 'bloc_chats_events.dart';
 class BlocChats extends Bloc<BlocChatsEvent, BlocChatsState> {
   final RepositoryChats repo;
 
+  late AppChatsState _chatsState;
+
   BlocChats({required this.repo}) : super(const BlocChatsState.init()) {
     on<BlocChatsEventInit>(_handleInit);
   }
-
-  late AppChatsState _chatsState;
 
   Future<void> _handleInit(
     BlocChatsEventInit event,
