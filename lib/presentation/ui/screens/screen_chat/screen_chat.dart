@@ -59,7 +59,7 @@ class _ScreenChatState extends State<ScreenChat> {
           children: [
             Expanded(
               child: BlocBuilder<BlocChat, BlocChatState>(
-                builder: (context, state) => state.when(
+                builder: (_, state) => state.when(
                   messages: (data) => _CMessages(messages: data?.messages ?? []),
                 ),
               ),

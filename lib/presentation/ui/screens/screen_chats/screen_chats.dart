@@ -56,7 +56,7 @@ class ScreenChats extends StatelessWidget {
     // );
 
     return Scaffold(
-      appBar: CAppBar(titleLabel: labelsChats[keyTitle]),
+      appBar: CAppBar(titleLabel: labelsChats[CKeys.title]),
       body: SafeArea(
         child: BlocBuilder<BlocAuth, BlocAuthState>(
           builder: (_, state) => state.when(
@@ -70,13 +70,13 @@ class ScreenChats extends StatelessWidget {
                 ),
                 error: () => CDataEmpty(
                   onRefresh: handleRefresh,
-                  description: labelsError[keyContent]!,
+                  description: labelsError[CKeys.content]!,
                 ),
               ),
             ),
             noAuth: () => CDataEmpty(
               onRefresh: handleRefresh,
-              description: labelsError[keyContent]!,
+              description: labelsError[CKeys.content]!,
             ),
           ),
         ),
