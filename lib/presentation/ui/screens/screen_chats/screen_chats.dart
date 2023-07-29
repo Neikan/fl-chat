@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:fl_chat/presentation/ui/components/c_divider.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -15,6 +14,7 @@ import 'package:fl_chat/presentation/consts/keys.dart';
 import 'package:fl_chat/presentation/consts/routes.dart';
 import 'package:fl_chat/presentation/consts/translations.dart';
 import 'package:fl_chat/presentation/ui/components/c_data_empty.dart';
+import 'package:fl_chat/presentation/ui/components/c_divider.dart';
 import 'package:fl_chat/presentation/ui/components/c_icon.dart';
 import 'package:fl_chat/presentation/ui/components/c_loader.dart';
 import 'package:fl_chat/presentation/ui/constraints/c_app_bar.dart';

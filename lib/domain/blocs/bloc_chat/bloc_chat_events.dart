@@ -2,20 +2,18 @@ part of 'bloc_chat.dart';
 
 abstract class BlocChatEvent {}
 
-class BlocChatEventChatUpdate extends BlocChatEvent {
-  final AppChatMessage? message;
+class BlocChatEventUpdate extends BlocChatEvent {}
 
-  BlocChatEventChatUpdate({this.message});
+class BlocChatEventSendMessage extends BlocChatEvent {
+  final String chatId, text;
+
+  BlocChatEventSendMessage({required this.chatId, required this.text});
 }
 
-class BlocChatEventChatSend extends BlocChatEvent {
-  final AppChatMessage? message;
-
-  BlocChatEventChatSend({this.message});
-}
-
-class BlocChatEventChatForceMenu extends BlocChatEvent {
+class BlocChatEventForceMenu extends BlocChatEvent {
   final ApiMenuForce menu;
 
-  BlocChatEventChatForceMenu(this.menu);
+  BlocChatEventForceMenu(this.menu);
 }
+
+class BlocChatEventDispose extends BlocChatEvent {}

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uuid/uuid.dart';
 
 // Project imports:
 import 'package:fl_chat/data/consts/enums.dart';
@@ -81,14 +80,10 @@ class _ScreenChatState extends State<ScreenChat> {
 
   void _handleSend() {
     if (_controller.text.trim().isNotEmpty) {
-      final newMessage = AppChatMessage(
-        action: ApiActionChat.send_message,
-        chatId: widget.chat.id,
-        text: _controller.text.trim(),
-        clientMessageId: const Uuid().v4(),
-      );
-
-      context.read<BlocChat>().add(BlocChatEventChatSend(message: newMessage));
+      context.read<BlocChat>().add(BlocChatEventSendMessage(
+            chatId: widget.chat.id,
+            text: _controller.text.trim(),
+          ));
 
       _controller.clear();
     }

@@ -1,71 +1,45 @@
 // Dart imports:
+// ignore_for_file: strict_raw_type
+
+// Dart imports:
 import 'dart:async';
 import 'dart:convert';
 
 // Package imports:
-import 'package:fl_chat/data/models/api_message_delivery_confirm/api_message_delivery_confirm.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 // Project imports:
 import 'package:fl_chat/data/consts/common.dart';
 import 'package:fl_chat/data/consts/enums.dart';
-// import 'package:fl_chat/data/mock/chats.dart';
-// import 'package:fl_chat/data/mock/menu.dart';
-// import 'package:fl_chat/data/mock/messages.dart';
 import 'package:fl_chat/data/models/api_chat/api_chat.dart';
 import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
-import 'package:fl_chat/data/models/api_send_message/api_send_message.dart';
+import 'package:fl_chat/data/models/api_message_delivery_confirm/api_message_delivery_confirm.dart';
+import 'package:fl_chat/data/models/api_message_send/api_message_send.dart';
 import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/data/services/service_api.dart';
 
 class ServiceApiImp implements ServiceApi {
   final WebSocketChannel _channel = IOWebSocketChannel.connect(apiUrl);
-  late AppChatMessage? _appClientMessage;
+  late StreamSubscription? _listener;
+  late AppChatMessage? _messageApp;
 
   static final instance = ServiceApiImp._();
   factory ServiceApiImp() => instance;
 
   ServiceApiImp._() {
-    listener = channelStream.listen((event) {
-      if (apiActionsAuth.contains(event)) {
-        authSink.add(event);
+    _listener = channelStream.listen((event) {
+      final eventSt = event as String;
+
+      if (apiActionsAuth.contains(eventSt)) {
+        authSink.add(eventSt);
       }
 
-      // ToDo замокано для дальнейшей разработки
-      // chatsSink.add([mockChat1, mockChat2]);
+      // Получение списка чатов
+      _handleGetChats(eventSt);
 
-      // final messageCreate = jsonEncode(mockMessageCreate.toJson());
-      // chatSink.add(AppChatMessage.fromJson(jsonDecode(messageCreate)));
-
-      // final menuCreate = jsonEncode(mockMenuCreate.toJson());
-      // chatSink.add(AppChatMessage.fromJson(jsonDecode(menuCreate)));
-
-      // final messageSend = jsonEncode(mockMessageSend.toJson());
-      // chatSink.add(AppChatMessage.fromJson(jsonDecode(messageSend)));
-      // ToDo конец
-
-      // Получение списка чатов пользователя
-      if (event.toString().contains(ApiActionChats.create_chat.name)) {
-        List<ApiChat> chats = List<dynamic>.from(
-          jsonDecode(event.toString()),
-        ).map((chat) => ApiChat.fromJson(chat)).toList();
-
-        chatsSink.add(chats);
-      }
-
-      // Получение подтверждения отправки сообщения и добавление его для клиента
-      if (event.toString().contains(ApiActionDelivery.message_delivery_confirm.name)) {
-        ApiMessageDeliveryConfirm delivery = ApiMessageDeliveryConfirm.fromJson(jsonDecode(event.toString()));
-
-        if (delivery.clientMessageId == _appClientMessage!.clientMessageId) {
-          _appClientMessage = _appClientMessage!.copyWith(
-            ctime: delivery.ctime,
-          );
-
-          chatSink.add(_appClientMessage!);
-        }
-      }
+      // Получение подтверждения отправки сообщения
+      _handleUpdateChat(eventSt);
 
       // ToDo подумать над парсингом - может лучше каждый объект парсить отдельной сущностью, тогда можно также будет проверять event на contains,
       // ToDo но возникнет другая проблема - рендера элемента.
@@ -97,46 +71,62 @@ class ServiceApiImp implements ServiceApi {
   StreamSink<AppChatMessage> get chatSink => _chatController.sink;
   Stream<AppChatMessage> get chatStream => _chatController.stream;
 
-  // ignore: strict_raw_type
-  late StreamSubscription? listener;
-
   @override
   void auth(String token) {
-    _channel.ready;
+    try {
+      _channel.ready;
 
-    channelSink.add('HELLO');
-    channelSink.add('AUTH $token');
+      channelSink.add('HELLO');
+      channelSink.add('AUTH $token');
+    } catch (_) {}
   }
 
   @override
-  void send(AppChatMessage message) {
-    final sendMessage = ApiSendMessage(
-      chatId: message.chatId!,
-      clientMessageId: message.clientMessageId!,
-      text: message.text!,
-      action: ApiActionChat.send_message,
-    );
+  void sendMessage(ApiMessageSend messageApi, {AppChatMessage? messageApp}) {
+    _messageApp = messageApp;
 
-    _appClientMessage = message;
-
-    final sendingMessage = jsonEncode(sendMessage.toJson());
+    final sendingMessage = jsonEncode(messageApi.toJson());
 
     channelSink.add(sendingMessage);
   }
 
   @override
   void forceMenu(ApiMenuForce menu) {
-    final sendingData = jsonEncode(menu.toJson());
+    final forcedMenu = jsonEncode(menu.toJson());
 
-    channelSink.add(sendingData);
+    channelSink.add(forcedMenu);
   }
 
   void dispose() {
-    listener?.cancel();
+    _listener?.cancel();
 
     _chatsController.close();
     _chatController.close();
     _authController.close();
     _channelController.close();
+  }
+
+  void _handleGetChats(String event) {
+    if (event.contains(ApiActionChats.create_chat.name)) {
+      List<ApiChat> chats = List<dynamic>.from(
+        jsonDecode(event.toString()),
+      ).map((chat) => ApiChat.fromJson(chat)).toList();
+
+      chatsSink.add(chats);
+    }
+  }
+
+  void _handleUpdateChat(String event) {
+    if (event.contains(ApiActionDelivery.message_delivery_confirm.name)) {
+      ApiMessageDeliveryConfirm delivery = ApiMessageDeliveryConfirm.fromJson(jsonDecode(event.toString()));
+
+      if (_messageApp != null && delivery.clientMessageId == _messageApp!.clientMessageId) {
+        _messageApp = _messageApp!.copyWith(
+          ctime: delivery.ctime,
+        );
+
+        chatSink.add(_messageApp!);
+      }
+    }
   }
 }

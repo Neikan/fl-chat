@@ -1,19 +1,16 @@
 // Package imports:
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'api_menu_item.freezed.dart';
 part 'api_menu_item.g.dart';
 
-@JsonSerializable()
-class ApiMenuItem {
-  final String id, title;
+@freezed
+class ApiMenuItem with _$ApiMenuItem {
+  const factory ApiMenuItem({
+    required String id,
+    required String title,
+    bool? isSelected,
+  }) = _ApiMenuItem;
 
-  ApiMenuItem({
-    required this.id,
-    required this.title,
-  });
-
-  factory ApiMenuItem.fromJson(Map<String, dynamic> json) =>
-      _$ApiMenuItemFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ApiMenuItemToJson(this);
+  factory ApiMenuItem.fromJson(Map<String, dynamic> json) => _$ApiMenuItemFromJson(json);
 }

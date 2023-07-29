@@ -1,13 +1,15 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:intl/intl.dart';
+
 // Project imports:
 import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
-import 'package:intl/intl.dart';
 
 class CMessageOutgoing extends StatelessWidget {
   final AppChatMessage message;

@@ -1,11 +1,11 @@
 // Flutter imports:
-import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_sizes.dart';
+import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
 
 class CTextField extends StatelessWidget {

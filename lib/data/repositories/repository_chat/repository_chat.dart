@@ -7,7 +7,7 @@ abstract class RepositoryChat {
 
   Stream<AppChatMessage> get chatStream;
 
-  void send(AppChatMessage message);
+  void sendMessage(String chatId, String text);
 
   void forceMenu(ApiMenuForce menu);
 }

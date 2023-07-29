@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // Project imports:
 import 'package:fl_chat/data/consts/enums.dart';
 
-part 'api_message_incoming.freezed.dart';
-part 'api_message_incoming.g.dart';
+part 'api_message_create.freezed.dart';
+part 'api_message_create.g.dart';
 
 @freezed
 class ApiMessageCreate with _$ApiMessageCreate {
@@ -17,7 +17,7 @@ class ApiMessageCreate with _$ApiMessageCreate {
     required String text,
     required String username,
     required String ctime,
-  }) = _ApiMessageIncoming;
+  }) = _ApiMessageCreate;
 
   factory ApiMessageCreate.fromJson(Map<String, dynamic> json) => _$ApiMessageCreateFromJson(json);
 }

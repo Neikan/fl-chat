@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_message_incoming.dart';
+part of 'api_message_create.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiMessageIncoming _$$_ApiMessageIncomingFromJson(
-        Map<String, dynamic> json) =>
-    _$_ApiMessageIncoming(
+_$_ApiMessageCreate _$$_ApiMessageCreateFromJson(Map<String, dynamic> json) =>
+    _$_ApiMessageCreate(
       action: $enumDecodeNullable(_$ApiActionChatEnumMap, json['action']) ??
           ApiActionChat.create_message,
       clientMessageId: json['client_message_id'] as String,
@@ -19,8 +18,7 @@ _$_ApiMessageIncoming _$$_ApiMessageIncomingFromJson(
       ctime: json['ctime'] as String,
     );
 
-Map<String, dynamic> _$$_ApiMessageIncomingToJson(
-        _$_ApiMessageIncoming instance) =>
+Map<String, dynamic> _$$_ApiMessageCreateToJson(_$_ApiMessageCreate instance) =>
     <String, dynamic>{
       'action': _$ApiActionChatEnumMap[instance.action]!,
       'client_message_id': instance.clientMessageId,

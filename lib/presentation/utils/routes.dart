@@ -30,7 +30,7 @@ Route<dynamic> generateRoute(RouteSettings settings) => MaterialPageRoute(
             final chat = arguments[keyChat]!;
 
             return BlocProvider<BlocChat>(
-              create: (_) => BlocChat(repo: RepositoryChatImp())..add(BlocChatEventChatUpdate()),
+              create: (_) => BlocChat(repo: RepositoryChatImp())..add(BlocChatEventUpdate()),
               child: ScreenChat(chat: chat),
             );
 

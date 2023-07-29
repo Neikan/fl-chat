@@ -12,3 +12,5 @@ enum ApiActionChat {
   create_menu,
   force_menu,
 }
+
+enum AppCommand { menu }
