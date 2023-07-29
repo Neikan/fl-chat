@@ -30,7 +30,7 @@ class RepositoryChatImp extends RepositoryChat {
 
     if (!isRequestMenu) {
       messageApp = AppChatMessage(
-        action: ApiActionChat.create_message,
+        action: ApiActionChat.send_message,
         chatId: chatId,
         clientMessageId: clientMessageId,
         text: text,
