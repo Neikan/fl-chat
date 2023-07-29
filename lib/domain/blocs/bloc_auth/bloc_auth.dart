@@ -19,22 +19,18 @@ class BlocAuth extends Bloc<BlocAuthEvent, BlocAuthState> {
     BlocAuthEventInit event,
     Emitter<BlocAuthState> emit,
   ) async {
-    try {
-      repo.auth();
+    repo.auth();
 
-      await emit.forEach(
-        repo.authStream,
-        onData: (data) {
-          if (data == ApiActionAuth.AUTH.name) return const BlocAuthState.auth();
+    await emit.forEach(
+      repo.authStream,
+      onData: (data) {
+        if (data == ApiActionAuth.AUTH.name) return const BlocAuthState.auth();
 
-          if (data == ApiActionAuth.AUTH_OK.name) return const BlocAuthState.authed();
+        if (data == ApiActionAuth.AUTH_OK.name) return const BlocAuthState.authed();
 
-          return const BlocAuthState.noAuth();
-        },
-        onError: (_, __) => const BlocAuthState.noAuth(),
-      );
-    } catch (e) {
-      emit(const BlocAuthState.noAuth());
-    }
+        return const BlocAuthState.noAuth();
+      },
+      onError: (_, __) => const BlocAuthState.noAuth(),
+    );
   }
 }

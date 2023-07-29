@@ -22,6 +22,7 @@ class ServiceApiImp implements ServiceApi {
   late WebSocketChannel _channel;
   late StreamSubscription? _listener;
   late AppChatMessage? _messageApp;
+  late StreamSink<AppChatMessage> _chatSink;
 
   static final instance = ServiceApiImp._();
   factory ServiceApiImp() => instance;
@@ -45,21 +46,20 @@ class ServiceApiImp implements ServiceApi {
   StreamSink<List<ApiChat>> get chatsSink => _chatsController.sink;
   Stream<List<ApiChat>> get chatsStream => _chatsController.stream;
 
-  // Стрим для работы с сообщениями
-  final StreamController<AppChatMessage> _chatController = StreamController<AppChatMessage>();
-  StreamSink<AppChatMessage> get chatSink => _chatController.sink;
-  Stream<AppChatMessage> get chatStream => _chatController.stream;
-
   @override
   void auth(String token) {
     _channel = IOWebSocketChannel.connect(apiUrl);
-
     _channel.ready;
 
     _handleListen();
 
     channelSink.add('HELLO');
     channelSink.add('AUTH $token');
+  }
+
+  @override
+  void initChat(StreamSink<AppChatMessage> chatSink) {
+    _chatSink = chatSink;
   }
 
   @override
@@ -82,7 +82,6 @@ class ServiceApiImp implements ServiceApi {
     _listener?.cancel();
 
     _chatsController.close();
-    _chatController.close();
     _authController.close();
     _channelController.close();
   }
@@ -106,7 +105,7 @@ class ServiceApiImp implements ServiceApi {
           ctime: delivery.ctime,
         );
 
-        chatSink.add(_messageApp!);
+        _chatSink.add(_messageApp!);
       }
     }
   }
@@ -126,12 +125,11 @@ class ServiceApiImp implements ServiceApi {
         // Получение подтверждения отправки сообщения
         _handleUpdateChat(eventSt);
 
-        // ToDo подумать над парсингом - может лучше каждый объект парсить отдельной сущностью, тогда можно также будет проверять event на contains,
-        // ToDo но возникнет другая проблема - рендера элемента.
+        // Получение прочих сообщений чата, что не парсится - игнорируется
         try {
           AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
 
-          chatSink.add(message);
+          _chatSink.add(message);
         } catch (_) {}
       });
     } catch (_) {}

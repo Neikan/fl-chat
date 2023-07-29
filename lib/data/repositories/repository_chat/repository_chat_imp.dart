@@ -1,4 +1,6 @@
 // Package imports:
+import 'dart:async';
+
 import 'package:uuid/uuid.dart';
 
 // Project imports:
@@ -13,7 +15,9 @@ class RepositoryChatImp extends RepositoryChat {
   RepositoryChatImp();
 
   @override
-  Stream<AppChatMessage> get chatStream => ServiceApiImp.instance.chatStream;
+  void init(StreamSink<AppChatMessage> chatSink) {
+    ServiceApiImp.instance.initChat(chatSink);
+  }
 
   @override
   void sendMessage(String chatId, String text) {

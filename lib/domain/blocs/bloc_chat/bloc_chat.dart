@@ -1,4 +1,6 @@
 // Package imports:
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
@@ -17,36 +19,39 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
     on<BlocChatEventUpdate>(_handleUpdate);
     on<BlocChatEventSendMessage>(_handleSendMessage);
     on<BlocChatEventForceMenu>(_handleForceMenu);
+    on<BlocChatEventClose>(_handleDispose);
   }
 
   AppChatState _chatState = const AppChatState(messages: []);
-  // late Stream<AppChatMessage> _chatStream;
+  final StreamController<AppChatMessage> _chatController = StreamController<AppChatMessage>();
 
   Future<void> _handleUpdate(
     BlocChatEventUpdate event,
     Emitter<BlocChatState> emit,
   ) async {
+    repo.init(_chatController.sink);
+
     await emit.forEach(
-      repo.chatStream,
+      _chatController.stream,
       onData: (data) {
-        _chatState = _chatState.copyWith(messages: [..._chatState.messages ?? [], data]);
+        _chatState = _chatState.copyWith(messages: [...?_chatState.messages, data]);
 
         return BlocChatState.messages(_chatState);
       },
     );
   }
 
-  Future<void> _handleSendMessage(
+  void _handleSendMessage(
     BlocChatEventSendMessage event,
     Emitter<BlocChatState> emit,
-  ) async {
+  ) {
     repo.sendMessage(event.chatId, event.text);
   }
 
-  Future<void> _handleForceMenu(
+  void _handleForceMenu(
     BlocChatEventForceMenu event,
     Emitter<BlocChatState> emit,
-  ) async {
+  ) {
     AppChatMessage? selectedMenu = _chatState.messages
         ?.where(
           (message) => message.id != null && message.id! == event.menu.menuId,
@@ -54,11 +59,11 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
         .last;
 
     if (selectedMenu != null) {
-      final updatedMenu = selectedMenu.menu?.map((item) {
-        return item.copyWith(
-          isSelected: item.id == event.menu.valueId,
-        );
-      }).toList();
+      final updatedMenu = selectedMenu.menu
+          ?.map((item) => item.copyWith(
+                isSelected: item.id == event.menu.valueId,
+              ))
+          .toList();
 
       selectedMenu = selectedMenu.copyWith(
         menu: updatedMenu,
@@ -74,5 +79,12 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
 
       repo.forceMenu(event.menu);
     }
+  }
+
+  void _handleDispose(
+    BlocChatEventClose event,
+    Emitter<BlocChatState> emit,
+  ) {
+    _chatController.close();
   }
 }

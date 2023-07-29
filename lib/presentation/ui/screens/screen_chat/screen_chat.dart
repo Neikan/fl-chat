@@ -49,7 +49,10 @@ class _ScreenChatState extends State<ScreenChat> {
       appBar: CAppBar(
         title: _CContact(title: widget.chat.title),
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pop(context);
+            context.read<BlocChat>().add(BlocChatEventClose());
+          },
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
