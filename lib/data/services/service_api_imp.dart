@@ -45,6 +45,7 @@ class ServiceApiImp implements ServiceApi {
       // chatSink.add(AppChatMessage.fromJson(jsonDecode(messageSend)));
       // ToDo конец
 
+      // Получение списка чатов пользователя
       if (event.toString().contains(ApiActionChats.create_chat.name)) {
         List<ApiChat> chats = List<dynamic>.from(
           jsonDecode(event.toString()),
@@ -53,7 +54,7 @@ class ServiceApiImp implements ServiceApi {
         chatsSink.add(chats);
       }
 
-      // Если получено подтверждение отправки, то сообщение добавляется в чат
+      // Получение подтверждения отправки сообщения и добавление его для клиента
       if (event.toString().contains(ApiActionDelivery.message_delivery_confirm.name)) {
         ApiMessageDeliveryConfirm delivery = ApiMessageDeliveryConfirm.fromJson(jsonDecode(event.toString()));
 
@@ -73,14 +74,6 @@ class ServiceApiImp implements ServiceApi {
 
         chatSink.add(message);
       } catch (_) {}
-
-      // if (apiActionsChat.contains(event)) {
-      //   List<ApiChat> chats = List<dynamic>.from(
-      //     jsonDecode(event.toString()),
-      //   ).map((chat) => ApiChat.fromJson(chat)).toList();
-
-      //   chatsSink.add(chats);
-      // }
     });
   }
 
@@ -117,32 +110,25 @@ class ServiceApiImp implements ServiceApi {
 
   @override
   void send(AppChatMessage message) {
-    String? sendingMessage;
+    final sendMessage = ApiSendMessage(
+      chatId: message.chatId!,
+      clientMessageId: message.clientMessageId!,
+      text: message.text!,
+      action: ApiActionChat.send_message,
+    );
 
-    if (message.action == ApiActionChat.send_message) {
-      final sendMessage = ApiSendMessage(
-        chatId: message.chatId!,
-        clientMessageId: message.clientMessageId!,
-        text: message.text!,
-        action: ApiActionChat.send_message,
-      );
+    _appClientMessage = message;
 
-      _appClientMessage = message;
-
-      sendingMessage = jsonEncode(sendMessage.toJson());
-    }
-
-    if (message.action == ApiActionChat.force_menu) {
-      final forceMenu = ApiMenuForce(
-        valueId: message.valueId!,
-        menuId: message.menuId!,
-        action: ApiActionChat.send_message,
-      );
-
-      sendingMessage = jsonEncode(forceMenu.toJson());
-    }
+    final sendingMessage = jsonEncode(sendMessage.toJson());
 
     channelSink.add(sendingMessage);
+  }
+
+  @override
+  void forceMenu(ApiMenuForce menu) {
+    final sendingData = jsonEncode(menu.toJson());
+
+    channelSink.add(sendingData);
   }
 
   void dispose() {

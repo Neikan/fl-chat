@@ -13,3 +13,9 @@ class BlocChatEventChatSend extends BlocChatEvent {
 
   BlocChatEventChatSend({this.message});
 }
+
+class BlocChatEventChatForceMenu extends BlocChatEvent {
+  final ApiMenuForce menu;
+
+  BlocChatEventChatForceMenu(this.menu);
+}

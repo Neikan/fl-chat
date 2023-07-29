@@ -21,6 +21,8 @@ ApiMenuForce _$ApiMenuForceFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ApiMenuForce {
   ApiActionChat get action => throw _privateConstructorUsedError;
+  @JsonKey(name: 'chat_id')
+  String get chatId => throw _privateConstructorUsedError;
   @JsonKey(name: 'menu_id')
   String get menuId => throw _privateConstructorUsedError;
   @JsonKey(name: 'value_id')
@@ -40,6 +42,7 @@ abstract class $ApiMenuForceCopyWith<$Res> {
   @useResult
   $Res call(
       {ApiActionChat action,
+      @JsonKey(name: 'chat_id') String chatId,
       @JsonKey(name: 'menu_id') String menuId,
       @JsonKey(name: 'value_id') String valueId});
 }
@@ -58,6 +61,7 @@ class _$ApiMenuForceCopyWithImpl<$Res, $Val extends ApiMenuForce>
   @override
   $Res call({
     Object? action = null,
+    Object? chatId = null,
     Object? menuId = null,
     Object? valueId = null,
   }) {
@@ -66,6 +70,10 @@ class _$ApiMenuForceCopyWithImpl<$Res, $Val extends ApiMenuForce>
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
               as ApiActionChat,
+      chatId: null == chatId
+          ? _value.chatId
+          : chatId // ignore: cast_nullable_to_non_nullable
+              as String,
       menuId: null == menuId
           ? _value.menuId
           : menuId // ignore: cast_nullable_to_non_nullable
@@ -88,6 +96,7 @@ abstract class _$$_ApiMenuForceCopyWith<$Res>
   @useResult
   $Res call(
       {ApiActionChat action,
+      @JsonKey(name: 'chat_id') String chatId,
       @JsonKey(name: 'menu_id') String menuId,
       @JsonKey(name: 'value_id') String valueId});
 }
@@ -104,6 +113,7 @@ class __$$_ApiMenuForceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? action = null,
+    Object? chatId = null,
     Object? menuId = null,
     Object? valueId = null,
   }) {
@@ -112,6 +122,10 @@ class __$$_ApiMenuForceCopyWithImpl<$Res>
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
               as ApiActionChat,
+      chatId: null == chatId
+          ? _value.chatId
+          : chatId // ignore: cast_nullable_to_non_nullable
+              as String,
       menuId: null == menuId
           ? _value.menuId
           : menuId // ignore: cast_nullable_to_non_nullable
@@ -129,6 +143,7 @@ class __$$_ApiMenuForceCopyWithImpl<$Res>
 class _$_ApiMenuForce implements _ApiMenuForce {
   const _$_ApiMenuForce(
       {this.action = ApiActionChat.force_menu,
+      @JsonKey(name: 'chat_id') required this.chatId,
       @JsonKey(name: 'menu_id') required this.menuId,
       @JsonKey(name: 'value_id') required this.valueId});
 
@@ -139,6 +154,9 @@ class _$_ApiMenuForce implements _ApiMenuForce {
   @JsonKey()
   final ApiActionChat action;
   @override
+  @JsonKey(name: 'chat_id')
+  final String chatId;
+  @override
   @JsonKey(name: 'menu_id')
   final String menuId;
   @override
@@ -147,7 +165,7 @@ class _$_ApiMenuForce implements _ApiMenuForce {
 
   @override
   String toString() {
-    return 'ApiMenuForce(action: $action, menuId: $menuId, valueId: $valueId)';
+    return 'ApiMenuForce(action: $action, chatId: $chatId, menuId: $menuId, valueId: $valueId)';
   }
 
   @override
@@ -156,13 +174,14 @@ class _$_ApiMenuForce implements _ApiMenuForce {
         (other.runtimeType == runtimeType &&
             other is _$_ApiMenuForce &&
             (identical(other.action, action) || other.action == action) &&
+            (identical(other.chatId, chatId) || other.chatId == chatId) &&
             (identical(other.menuId, menuId) || other.menuId == menuId) &&
             (identical(other.valueId, valueId) || other.valueId == valueId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, action, menuId, valueId);
+  int get hashCode => Object.hash(runtimeType, action, chatId, menuId, valueId);
 
   @JsonKey(ignore: true)
   @override
@@ -181,6 +200,7 @@ class _$_ApiMenuForce implements _ApiMenuForce {
 abstract class _ApiMenuForce implements ApiMenuForce {
   const factory _ApiMenuForce(
           {final ApiActionChat action,
+          @JsonKey(name: 'chat_id') required final String chatId,
           @JsonKey(name: 'menu_id') required final String menuId,
           @JsonKey(name: 'value_id') required final String valueId}) =
       _$_ApiMenuForce;
@@ -190,6 +210,9 @@ abstract class _ApiMenuForce implements ApiMenuForce {
 
   @override
   ApiActionChat get action;
+  @override
+  @JsonKey(name: 'chat_id')
+  String get chatId;
   @override
   @JsonKey(name: 'menu_id')
   String get menuId;

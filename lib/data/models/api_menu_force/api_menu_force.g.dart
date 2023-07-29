@@ -10,6 +10,7 @@ _$_ApiMenuForce _$$_ApiMenuForceFromJson(Map<String, dynamic> json) =>
     _$_ApiMenuForce(
       action: $enumDecodeNullable(_$ApiActionChatEnumMap, json['action']) ??
           ApiActionChat.force_menu,
+      chatId: json['chat_id'] as String,
       menuId: json['menu_id'] as String,
       valueId: json['value_id'] as String,
     );
@@ -17,6 +18,7 @@ _$_ApiMenuForce _$$_ApiMenuForceFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_ApiMenuForceToJson(_$_ApiMenuForce instance) =>
     <String, dynamic>{
       'action': _$ApiActionChatEnumMap[instance.action]!,
+      'chat_id': instance.chatId,
       'menu_id': instance.menuId,
       'value_id': instance.valueId,
     };

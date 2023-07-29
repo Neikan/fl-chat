@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
@@ -15,6 +16,7 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
   BlocChat({required this.repo}) : super(const BlocChatState.messages(null)) {
     on<BlocChatEventChatUpdate>(_handleUpdate);
     on<BlocChatEventChatSend>(_handleSend);
+    on<BlocChatEventChatForceMenu>(_handleForceMenu);
   }
 
   AppChatState _chatState = const AppChatState(messages: []);
@@ -38,5 +40,20 @@ class BlocChat extends Bloc<BlocChatEvent, BlocChatState> {
     Emitter<BlocChatState> emit,
   ) async {
     repo.send(event.message!);
+  }
+
+  Future<void> _handleForceMenu(
+    BlocChatEventChatForceMenu event,
+    Emitter<BlocChatState> emit,
+  ) async {
+    final selectedMenu = _chatState.messages?.where((message) {
+      return message.id != null && message.id! == event.menu.menuId;
+    }).single;
+
+    if (selectedMenu != null) {
+      _chatState = _chatState.copyWith(messages: [selectedMenu]);
+
+      repo.forceMenu(event.menu);
+    }
   }
 }

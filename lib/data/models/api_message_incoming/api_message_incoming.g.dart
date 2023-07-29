@@ -10,12 +10,13 @@ _$_ApiMessageIncoming _$$_ApiMessageIncomingFromJson(
         Map<String, dynamic> json) =>
     _$_ApiMessageIncoming(
       action: $enumDecodeNullable(_$ApiActionChatEnumMap, json['action']) ??
-          ApiActionChat.send_message,
+          ApiActionChat.create_message,
       clientMessageId: json['client_message_id'] as String,
       messageId: json['message_id'] as String,
       chatId: json['chat_id'] as String,
       text: json['text'] as String,
       username: json['username'] as String,
+      ctime: json['ctime'] as String,
     );
 
 Map<String, dynamic> _$$_ApiMessageIncomingToJson(
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$_ApiMessageIncomingToJson(
       'chat_id': instance.chatId,
       'text': instance.text,
       'username': instance.username,
+      'ctime': instance.ctime,
     };
 
 const _$ApiActionChatEnumMap = {
