@@ -7,3 +7,9 @@ class CKeys {
   static const String chat = 'chat';
   static const String chatFieldHint = 'fieldHint';
 }
+
+class CKeysIcon {
+  CKeysIcon._();
+
+  static const String send = 'send';
+}

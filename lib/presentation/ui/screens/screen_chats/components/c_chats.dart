@@ -17,7 +17,7 @@ class _CChats extends StatelessWidget {
       return CDataEmpty(
         onRefresh: onRefresh,
         message: labelsChats[CKeys.content],
-        icon: CIcon(name: 'send', color: CColors.blue, size: CSizes.emptyIcon),
+        icon: CIcon(name: CKeysIcon.send, color: CColors.blue, size: CSizes.emptyIcon),
       );
     }
 

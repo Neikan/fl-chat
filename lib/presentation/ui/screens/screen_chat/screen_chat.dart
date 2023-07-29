@@ -11,6 +11,7 @@ import 'package:fl_chat/data/models/api_chat/api_chat.dart';
 import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/domain/blocs/bloc_chat/bloc_chat.dart';
 import 'package:fl_chat/domain/states/bloc_chat_state/bloc_chat_state.dart';
+import 'package:fl_chat/presentation/consts/keys.dart';
 import 'package:fl_chat/presentation/consts/translations.dart';
 import 'package:fl_chat/presentation/ui/components/c_icon.dart';
 import 'package:fl_chat/presentation/ui/components/c_text_field.dart';
@@ -66,10 +67,10 @@ class _ScreenChatState extends State<ScreenChat> {
             ),
             CTextField(
               controller: _controller,
-              hintText: 'Напишите ваше сообщение',
+              hintText: labelsChats[CKeys.chatFieldHint],
               suffix: GestureDetector(
                 onTap: _handleSend,
-                child: const CIcon(name: 'send', color: CColors.blue),
+                child: const CIcon(name: CKeysIcon.send, color: CColors.blue),
               ),
             ),
           ],
