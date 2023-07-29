@@ -7,6 +7,7 @@ import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
+import 'package:intl/intl.dart';
 
 class CMessageOutgoing extends StatelessWidget {
   final AppChatMessage message;
@@ -19,7 +20,7 @@ class CMessageOutgoing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: CSpaces.pl32,
+      padding: const EdgeInsets.only(left: CSpaces.sp32, bottom: CSpaces.sp4),
       child: Align(
         alignment: Alignment.topRight,
         child: Container(
@@ -29,10 +30,26 @@ class CMessageOutgoing extends StatelessWidget {
             border: Border.all(color: CColors.messageInBorder),
           ),
           padding: CSpaces.p16,
-          child: Text(
-            message.text!,
-            style: CTextStyle.messageOut,
-            textAlign: TextAlign.right,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(message.text!, style: CTextStyle.messageOut),
+                    Padding(
+                      padding: CSpaces.pt4,
+                      child: Text(
+                        DateFormat('hh:mm').format(DateTime.now()),
+                        style: CTextStyle.messageOutDate,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

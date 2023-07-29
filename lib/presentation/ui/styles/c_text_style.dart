@@ -30,6 +30,11 @@ abstract class CTextStyle {
     fontSize: 14.0,
   );
 
+  static const TextStyle messageOutDate = TextStyle(
+    color: CColors.messageOut,
+    fontSize: 10.0,
+  );
+
   static const TextStyle messageIn = TextStyle(
     color: CColors.messageIn,
     fontSize: 14.0,

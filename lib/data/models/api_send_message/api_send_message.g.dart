@@ -28,5 +28,4 @@ const _$ApiActionChatEnumMap = {
   ApiActionChat.send_message: 'send_message',
   ApiActionChat.create_menu: 'create_menu',
   ApiActionChat.force_menu: 'force_menu',
-  ApiActionChat.message_delivery_confirm: 'message_delivery_confirm',
 };

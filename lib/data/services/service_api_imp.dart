@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 
 // Package imports:
+import 'package:fl_chat/data/models/api_message_delivery_confirm/api_message_delivery_confirm.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
@@ -19,6 +20,9 @@ import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/data/services/service_api.dart';
 
 class ServiceApiImp implements ServiceApi {
+  final WebSocketChannel _channel = IOWebSocketChannel.connect(apiUrl);
+  late AppChatMessage? _appClientMessage;
+
   static final instance = ServiceApiImp._();
   factory ServiceApiImp() => instance;
 
@@ -49,6 +53,19 @@ class ServiceApiImp implements ServiceApi {
         chatsSink.add(chats);
       }
 
+      // Если получено подтверждение отправки, то сообщение добавляется в чат
+      if (event.toString().contains(ApiActionDelivery.message_delivery_confirm.name)) {
+        ApiMessageDeliveryConfirm delivery = ApiMessageDeliveryConfirm.fromJson(jsonDecode(event.toString()));
+
+        if (delivery.clientMessageId == _appClientMessage!.clientMessageId) {
+          _appClientMessage = _appClientMessage!.copyWith(
+            ctime: delivery.ctime,
+          );
+
+          chatSink.add(_appClientMessage!);
+        }
+      }
+
       // ToDo подумать над парсингом - может лучше каждый объект парсить отдельной сущностью, тогда можно также будет проверять event на contains,
       // ToDo но возникнет другая проблема - рендера элемента.
       try {
@@ -66,8 +83,6 @@ class ServiceApiImp implements ServiceApi {
       // }
     });
   }
-
-  final WebSocketChannel _channel = IOWebSocketChannel.connect(apiUrl);
 
   // Стрим самого веб-сокета
   final StreamController<dynamic> _channelController = StreamController<dynamic>();
@@ -111,6 +126,8 @@ class ServiceApiImp implements ServiceApi {
         text: message.text!,
         action: ApiActionChat.send_message,
       );
+
+      _appClientMessage = message;
 
       sendingMessage = jsonEncode(sendMessage.toJson());
     }
