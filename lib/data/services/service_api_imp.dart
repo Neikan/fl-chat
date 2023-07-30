@@ -21,9 +21,6 @@ class ServiceApiImp implements ServiceApi {
   static final instance = ServiceApiImp._();
   factory ServiceApiImp() => instance;
 
-  late WebSocketChannel _channel;
-  late StreamSubscription<dynamic>? _channelListener;
-
   // Стрим самого веб-сокета
   final StreamController<dynamic> _channelController = StreamController<dynamic>();
   StreamSink<dynamic> get channelSink => _channel.sink;
@@ -39,7 +36,9 @@ class ServiceApiImp implements ServiceApi {
   StreamSink<List<ApiChat>> get chatsSink => _chatsController.sink;
   Stream<List<ApiChat>> get chatsStream => _chatsController.stream;
 
-  late StreamSink<AppChatMessage> _chatSink;
+  late WebSocketChannel _channel;
+  late StreamSubscription<dynamic>? _channelListener;
+  late StreamSink<AppChatMessage> chatSink;
   late AppChatMessage? _messageApp;
 
   @override
@@ -51,11 +50,6 @@ class ServiceApiImp implements ServiceApi {
 
     channelSink.add('HELLO');
     channelSink.add('AUTH $token');
-  }
-
-  @override
-  void initChat(StreamSink<AppChatMessage> chatSink) {
-    _chatSink = chatSink;
   }
 
   @override
@@ -76,32 +70,7 @@ class ServiceApiImp implements ServiceApi {
 
   void dispose() {
     _channelListener?.cancel();
-    _chatsController.close();
     _channelController.close();
-  }
-
-  void _handleGetChats(String event) {
-    if (event.contains(ApiActionChats.create_chat.name)) {
-      List<ApiChat> chats = List<dynamic>.from(
-        jsonDecode(event),
-      ).map((chat) => ApiChat.fromJson(chat)).toList();
-
-      chatsSink.add(chats);
-    }
-  }
-
-  void _handleUpdateChat(String event) {
-    if (event.contains(ApiActionDelivery.message_delivery_confirm.name)) {
-      ApiMessageDeliveryConfirm delivery = ApiMessageDeliveryConfirm.fromJson(jsonDecode(event));
-
-      if (_messageApp != null && delivery.clientMessageId == _messageApp!.clientMessageId) {
-        _messageApp = _messageApp!.copyWith(
-          ctime: delivery.ctime,
-        );
-
-        _chatSink.add(_messageApp!);
-      }
-    }
   }
 
   void _handleListen() {
@@ -115,15 +84,40 @@ class ServiceApiImp implements ServiceApi {
       // Получение списка чатов
       _handleGetChats(eventSt);
 
-      // Получение подтверждения отправки сообщения
+      // Получение сообщений
       _handleUpdateChat(eventSt);
-
-      // Получение прочих сообщений чата, что не парсится - игнорируется
-      try {
-        AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
-
-        _chatSink.add(message);
-      } catch (_) {}
     });
+  }
+
+  void _handleGetChats(String event) {
+    if (event.contains(ApiActionChats.create_chat.name)) {
+      List<ApiChat> chats = List<dynamic>.from(
+        jsonDecode(event),
+      ).map((chat) => ApiChat.fromJson(chat)).toList();
+
+      chatsSink.add(chats);
+    }
+  }
+
+  void _handleUpdateChat(String event) {
+    // Получение подтверждения отправки сообщения
+    if (event.contains(ApiActionDelivery.message_delivery_confirm.name)) {
+      ApiMessageDeliveryConfirm delivery = ApiMessageDeliveryConfirm.fromJson(jsonDecode(event));
+
+      if (_messageApp != null && delivery.clientMessageId == _messageApp!.clientMessageId) {
+        _messageApp = _messageApp!.copyWith(
+          ctime: delivery.ctime,
+        );
+
+        chatSink.add(_messageApp!);
+      }
+    }
+
+    // Получение прочих сообщений чата, что не парсится - игнорируется
+    try {
+      AppChatMessage message = AppChatMessage.fromJson(jsonDecode(event.toString()));
+
+      chatSink.add(message);
+    } catch (_) {}
   }
 }

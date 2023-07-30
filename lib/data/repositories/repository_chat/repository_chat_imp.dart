@@ -17,7 +17,7 @@ class RepositoryChatImp extends RepositoryChat {
 
   @override
   void init(StreamSink<AppChatMessage> chatSink) {
-    ServiceApiImp.instance.initChat(chatSink);
+    ServiceApiImp.instance.chatSink = chatSink;
   }
 
   @override
