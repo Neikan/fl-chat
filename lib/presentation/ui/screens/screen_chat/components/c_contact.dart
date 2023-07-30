@@ -33,13 +33,23 @@ class _CContactAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: '',
+      fit: BoxFit.cover,
       imageBuilder: (_, image) => CircleAvatar(
         radius: CSizes.contactAvatar,
         backgroundImage: image,
       ),
       errorWidget: (_, __, ___) => CircleAvatar(
         radius: CSizes.contactAvatar,
-        backgroundColor: CColors.contactBackgroundAvatar,
+        backgroundColor: CColors.blue,
+        child: CircleAvatar(
+          radius: CSizes.contactAvatar - 1,
+          backgroundColor: CColors.white,
+          child: Icon(
+            Icons.camera_alt,
+            color: CColors.blue,
+            size: CSizes.contactAvatar,
+          ),
+        ),
       ),
     );
   }

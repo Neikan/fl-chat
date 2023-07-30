@@ -34,4 +34,16 @@ abstract class CDecoration {
       spreadRadius: 0.0,
     ),
   ];
+
+  static BoxDecoration boxMessageIn = BoxDecoration(
+    color: CColors.messageInBackground,
+    borderRadius: CDecoration.brMessageIn,
+    border: Border.all(color: CColors.messageInBorder),
+  );
+
+  static BoxDecoration boxMessageOut = BoxDecoration(
+    color: CColors.messageOutBackground,
+    borderRadius: CDecoration.brMessageOut,
+    border: Border.all(color: CColors.messageInBorder),
+  );
 }

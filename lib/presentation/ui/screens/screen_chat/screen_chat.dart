@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 // Project imports:
 import 'package:fl_chat/data/consts/enums.dart';
 import 'package:fl_chat/data/models/api_chat/api_chat.dart';
+import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
 import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
 import 'package:fl_chat/domain/blocs/bloc_chat/bloc_chat.dart';
 import 'package:fl_chat/domain/states/bloc_chat_state/bloc_chat_state.dart';
@@ -16,9 +18,6 @@ import 'package:fl_chat/presentation/consts/translations.dart';
 import 'package:fl_chat/presentation/ui/components/c_icon.dart';
 import 'package:fl_chat/presentation/ui/components/c_text_field.dart';
 import 'package:fl_chat/presentation/ui/constraints/c_app_bar.dart';
-import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_menu.dart';
-import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message_incoming.dart';
-import 'package:fl_chat/presentation/ui/screens/screen_chat/components/c_message_outgoing.dart';
 import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
 import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
 import 'package:fl_chat/presentation/ui/styles/c_sizes.dart';
@@ -26,6 +25,8 @@ import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
 import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
 
 part 'components/c_contact.dart';
+part 'components/c_menu.dart';
+part 'components/c_message.dart';
 part 'components/c_messages.dart';
 
 class ScreenChat extends StatefulWidget {

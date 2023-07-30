@@ -1,18 +1,4 @@
-// Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-// Project imports:
-import 'package:fl_chat/data/consts/enums.dart';
-import 'package:fl_chat/data/models/api_menu_force/api_menu_force.dart';
-import 'package:fl_chat/data/models/app_chat_message/app_chat_message.dart';
-import 'package:fl_chat/domain/blocs/bloc_chat/bloc_chat.dart';
-import 'package:fl_chat/presentation/ui/styles/c_colors.dart';
-import 'package:fl_chat/presentation/ui/styles/c_decoration.dart';
-import 'package:fl_chat/presentation/ui/styles/c_spaces.dart';
-import 'package:fl_chat/presentation/ui/styles/c_text_style.dart';
+part of '../screen_chat.dart';
 
 class CMenu extends StatelessWidget {
   final AppChatMessage message;
