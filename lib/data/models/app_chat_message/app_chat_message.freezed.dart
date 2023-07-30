@@ -31,6 +31,7 @@ mixin _$AppChatMessage {
   String? get username => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
+  String? get ctime => throw _privateConstructorUsedError;
   List<ApiMenuItem>? get menu => throw _privateConstructorUsedError;
   @JsonKey(name: 'menu_id')
   String? get menuId => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $AppChatMessageCopyWith<$Res> {
       String? username,
       String? id,
       String? title,
+      String? ctime,
       List<ApiMenuItem>? menu,
       @JsonKey(name: 'menu_id') String? menuId,
       @JsonKey(name: 'value_id') String? valueId});
@@ -84,6 +86,7 @@ class _$AppChatMessageCopyWithImpl<$Res, $Val extends AppChatMessage>
     Object? username = freezed,
     Object? id = freezed,
     Object? title = freezed,
+    Object? ctime = freezed,
     Object? menu = freezed,
     Object? menuId = freezed,
     Object? valueId = freezed,
@@ -121,6 +124,10 @@ class _$AppChatMessageCopyWithImpl<$Res, $Val extends AppChatMessage>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      ctime: freezed == ctime
+          ? _value.ctime
+          : ctime // ignore: cast_nullable_to_non_nullable
+              as String?,
       menu: freezed == menu
           ? _value.menu
           : menu // ignore: cast_nullable_to_non_nullable
@@ -154,6 +161,7 @@ abstract class _$$_AppChatMessageCopyWith<$Res>
       String? username,
       String? id,
       String? title,
+      String? ctime,
       List<ApiMenuItem>? menu,
       @JsonKey(name: 'menu_id') String? menuId,
       @JsonKey(name: 'value_id') String? valueId});
@@ -178,6 +186,7 @@ class __$$_AppChatMessageCopyWithImpl<$Res>
     Object? username = freezed,
     Object? id = freezed,
     Object? title = freezed,
+    Object? ctime = freezed,
     Object? menu = freezed,
     Object? menuId = freezed,
     Object? valueId = freezed,
@@ -215,6 +224,10 @@ class __$$_AppChatMessageCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      ctime: freezed == ctime
+          ? _value.ctime
+          : ctime // ignore: cast_nullable_to_non_nullable
+              as String?,
       menu: freezed == menu
           ? _value._menu
           : menu // ignore: cast_nullable_to_non_nullable
@@ -243,6 +256,7 @@ class _$_AppChatMessage implements _AppChatMessage {
       this.username,
       this.id,
       this.title,
+      this.ctime,
       final List<ApiMenuItem>? menu,
       @JsonKey(name: 'menu_id') this.menuId,
       @JsonKey(name: 'value_id') this.valueId})
@@ -270,6 +284,8 @@ class _$_AppChatMessage implements _AppChatMessage {
   final String? id;
   @override
   final String? title;
+  @override
+  final String? ctime;
   final List<ApiMenuItem>? _menu;
   @override
   List<ApiMenuItem>? get menu {
@@ -289,7 +305,7 @@ class _$_AppChatMessage implements _AppChatMessage {
 
   @override
   String toString() {
-    return 'AppChatMessage(action: $action, clientMessageId: $clientMessageId, chatId: $chatId, text: $text, messageId: $messageId, username: $username, id: $id, title: $title, menu: $menu, menuId: $menuId, valueId: $valueId)';
+    return 'AppChatMessage(action: $action, clientMessageId: $clientMessageId, chatId: $chatId, text: $text, messageId: $messageId, username: $username, id: $id, title: $title, ctime: $ctime, menu: $menu, menuId: $menuId, valueId: $valueId)';
   }
 
   @override
@@ -308,6 +324,7 @@ class _$_AppChatMessage implements _AppChatMessage {
                 other.username == username) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.ctime, ctime) || other.ctime == ctime) &&
             const DeepCollectionEquality().equals(other._menu, _menu) &&
             (identical(other.menuId, menuId) || other.menuId == menuId) &&
             (identical(other.valueId, valueId) || other.valueId == valueId));
@@ -325,6 +342,7 @@ class _$_AppChatMessage implements _AppChatMessage {
       username,
       id,
       title,
+      ctime,
       const DeepCollectionEquality().hash(_menu),
       menuId,
       valueId);
@@ -353,6 +371,7 @@ abstract class _AppChatMessage implements AppChatMessage {
       final String? username,
       final String? id,
       final String? title,
+      final String? ctime,
       final List<ApiMenuItem>? menu,
       @JsonKey(name: 'menu_id') final String? menuId,
       @JsonKey(name: 'value_id') final String? valueId}) = _$_AppChatMessage;
@@ -379,6 +398,8 @@ abstract class _AppChatMessage implements AppChatMessage {
   String? get id;
   @override
   String? get title;
+  @override
+  String? get ctime;
   @override
   List<ApiMenuItem>? get menu;
   @override

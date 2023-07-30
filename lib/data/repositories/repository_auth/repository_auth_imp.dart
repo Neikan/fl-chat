@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:async';
-
 // Project imports:
 import 'package:fl_chat/data/repositories/repository_auth/repository_auth.dart';
 import 'package:fl_chat/data/services/service_api_imp.dart';
@@ -12,7 +9,10 @@ class RepositoryAuthImp extends RepositoryAuth {
   Stream<String> get authStream => ServiceApiImp.instance.authStream;
 
   @override
-  void auth(String token) {
+  void auth() {
+    // ToDo должен браться из хранилки в приложении
+    const token = 'testtoken';
+
     ServiceApiImp.instance.auth(token);
   }
 }

@@ -19,6 +19,7 @@ class AppChatMessage with _$AppChatMessage {
     String? username,
     String? id,
     String? title,
+    String? ctime,
     List<ApiMenuItem>? menu,
     @JsonKey(name: 'menu_id') String? menuId,
     @JsonKey(name: 'value_id') String? valueId,

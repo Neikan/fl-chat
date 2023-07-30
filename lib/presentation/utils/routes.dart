@@ -27,10 +27,10 @@ Route<dynamic> generateRoute(RouteSettings settings) => MaterialPageRoute(
 
           case AppRoutes.routeChat:
             final arguments = settings.arguments as Map<String, ApiChat>;
-            final chat = arguments[keyChat]!;
+            final chat = arguments[CKeys.chat]!;
 
             return BlocProvider<BlocChat>(
-              create: (_) => BlocChat(repo: RepositoryChatImp())..add(BlocChatEventChatUpdate()),
+              create: (_) => BlocChat(repo: RepositoryChatImp())..add(BlocChatEventUpdate()),
               child: ScreenChat(chat: chat),
             );
 

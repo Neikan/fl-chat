@@ -16,6 +16,7 @@ _$_AppChatMessage _$$_AppChatMessageFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
       id: json['id'] as String?,
       title: json['title'] as String?,
+      ctime: json['ctime'] as String?,
       menu: (json['menu'] as List<dynamic>?)
           ?.map((e) => ApiMenuItem.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$_AppChatMessageToJson(_$_AppChatMessage instance) =>
       'username': instance.username,
       'id': instance.id,
       'title': instance.title,
+      'ctime': instance.ctime,
       'menu': instance.menu,
       'menu_id': instance.menuId,
       'value_id': instance.valueId,
@@ -43,5 +45,4 @@ const _$ApiActionChatEnumMap = {
   ApiActionChat.send_message: 'send_message',
   ApiActionChat.create_menu: 'create_menu',
   ApiActionChat.force_menu: 'force_menu',
-  ApiActionChat.message_delivery_confirm: 'message_delivery_confirm',
 };

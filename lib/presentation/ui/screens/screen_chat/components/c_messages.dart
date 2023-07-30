@@ -21,10 +21,9 @@ class _CMessages extends StatelessWidget {
         final isIncoming = message.action == ApiActionChat.create_message;
         final isMenu = message.action == ApiActionChat.create_menu;
 
-        if (isIncoming) return CMessageIncoming(message: message);
         if (isMenu) return CMenu(message: message);
 
-        return CMessageOutgoing(message: message);
+        return _CMessage(text: message.text!, isIncoming: isIncoming);
       },
     );
   }

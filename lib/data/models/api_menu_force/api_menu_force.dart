@@ -11,6 +11,7 @@ part 'api_menu_force.g.dart';
 class ApiMenuForce with _$ApiMenuForce {
   const factory ApiMenuForce({
     @Default(ApiActionChat.force_menu) ApiActionChat action,
+    @JsonKey(name: 'chat_id') required String chatId,
     @JsonKey(name: 'menu_id') required String menuId,
     @JsonKey(name: 'value_id') required String valueId,
   }) = _ApiMenuForce;

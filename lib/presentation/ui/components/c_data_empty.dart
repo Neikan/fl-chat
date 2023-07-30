@@ -51,7 +51,7 @@ class CDataEmpty extends StatelessWidget {
                   Padding(
                     padding: CSpaces.ph16,
                     child: Text(
-                      message ?? labelsError[keyTitle]!,
+                      message ?? labelsError[CKeys.title]!,
                       style: CTextStyle.emptyMessage,
                       textAlign: TextAlign.center,
                     ),

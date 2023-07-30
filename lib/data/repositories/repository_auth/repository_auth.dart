@@ -3,5 +3,5 @@ abstract class RepositoryAuth {
 
   Stream<String> get authStream;
 
-  void auth(String token);
+  void auth();
 }

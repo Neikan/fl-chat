@@ -17,7 +17,7 @@ class _CChatsCard extends StatelessWidget {
         title: Text(chat.title, style: CTextStyle.chatsCardTitle),
         trailing: const Icon(Icons.arrow_forward_ios),
         onTap: () {
-          final arguments = {keyChat: chat};
+          final arguments = {CKeys.chat: chat};
 
           Navigator.pushNamed(context, AppRoutes.routeChat, arguments: arguments);
         },

@@ -21,7 +21,7 @@ ApiMessageDeliveryConfirm _$ApiMessageDeliveryConfirmFromJson(
 
 /// @nodoc
 mixin _$ApiMessageDeliveryConfirm {
-  ApiActionChat get action => throw _privateConstructorUsedError;
+  ApiActionDelivery get action => throw _privateConstructorUsedError;
   @JsonKey(name: 'client_message_id')
   String get clientMessageId => throw _privateConstructorUsedError;
   @JsonKey(name: 'message_id')
@@ -43,7 +43,7 @@ abstract class $ApiMessageDeliveryConfirmCopyWith<$Res> {
       _$ApiMessageDeliveryConfirmCopyWithImpl<$Res, ApiMessageDeliveryConfirm>;
   @useResult
   $Res call(
-      {ApiActionChat action,
+      {ApiActionDelivery action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'message_id') String messageId,
       @JsonKey(name: 'chat_id') String chatId,
@@ -74,7 +74,7 @@ class _$ApiMessageDeliveryConfirmCopyWithImpl<$Res,
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as ApiActionChat,
+              as ApiActionDelivery,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -105,7 +105,7 @@ abstract class _$$_ApiMessageDeliveryConfirmCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ApiActionChat action,
+      {ApiActionDelivery action,
       @JsonKey(name: 'client_message_id') String clientMessageId,
       @JsonKey(name: 'message_id') String messageId,
       @JsonKey(name: 'chat_id') String chatId,
@@ -135,7 +135,7 @@ class __$$_ApiMessageDeliveryConfirmCopyWithImpl<$Res>
       action: null == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
-              as ApiActionChat,
+              as ApiActionDelivery,
       clientMessageId: null == clientMessageId
           ? _value.clientMessageId
           : clientMessageId // ignore: cast_nullable_to_non_nullable
@@ -160,7 +160,7 @@ class __$$_ApiMessageDeliveryConfirmCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ApiMessageDeliveryConfirm implements _ApiMessageDeliveryConfirm {
   const _$_ApiMessageDeliveryConfirm(
-      {this.action = ApiActionChat.message_delivery_confirm,
+      {this.action = ApiActionDelivery.message_delivery_confirm,
       @JsonKey(name: 'client_message_id') required this.clientMessageId,
       @JsonKey(name: 'message_id') required this.messageId,
       @JsonKey(name: 'chat_id') required this.chatId,
@@ -171,7 +171,7 @@ class _$_ApiMessageDeliveryConfirm implements _ApiMessageDeliveryConfirm {
 
   @override
   @JsonKey()
-  final ApiActionChat action;
+  final ApiActionDelivery action;
   @override
   @JsonKey(name: 'client_message_id')
   final String clientMessageId;
@@ -225,7 +225,7 @@ class _$_ApiMessageDeliveryConfirm implements _ApiMessageDeliveryConfirm {
 
 abstract class _ApiMessageDeliveryConfirm implements ApiMessageDeliveryConfirm {
   const factory _ApiMessageDeliveryConfirm(
-      {final ApiActionChat action,
+      {final ApiActionDelivery action,
       @JsonKey(name: 'client_message_id') required final String clientMessageId,
       @JsonKey(name: 'message_id') required final String messageId,
       @JsonKey(name: 'chat_id') required final String chatId,
@@ -235,7 +235,7 @@ abstract class _ApiMessageDeliveryConfirm implements ApiMessageDeliveryConfirm {
       _$_ApiMessageDeliveryConfirm.fromJson;
 
   @override
-  ApiActionChat get action;
+  ApiActionDelivery get action;
   @override
   @JsonKey(name: 'client_message_id')
   String get clientMessageId;
